@@ -1,3 +1,10 @@
+import { ApodImage } from "../../components/ApodImage/ApodImage";
+
 export const AstronomyPage = () => {
-  return <h2>Astronomy</h2>;
+  return (
+    <>
+      Astronomy
+      <ApodImage />
+    </>
+  );
 };
