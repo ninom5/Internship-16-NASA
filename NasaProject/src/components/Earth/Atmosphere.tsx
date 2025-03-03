@@ -1,13 +1,7 @@
 import * as THREE from "three";
 import React from "react";
+import { AtmosphereMeshProps } from "../../types";
 
-// Define types for props
-interface AtmosphereMeshProps {
-  rimHex?: number; // Optional rim color hex
-  facingHex?: number; // Optional facing color hex
-}
-
-// Function to get Fresnel shader arguments
 function getFresnelShaderArgs({
   rimHex = 0x0088ff,
   facingHex = 0x000000,
@@ -56,12 +50,10 @@ function getFresnelShaderArgs({
     fragmentShader: fs,
     transparent: true,
     blending: THREE.AdditiveBlending,
-    // wireframe: true, // Uncomment if you want to enable wireframe
   };
   return args;
 }
 
-// AtmosphereMesh component with typed props
 const AtmosphereMesh: React.FC<AtmosphereMeshProps> = ({
   rimHex = 0x0088ff,
   facingHex = 0x000000,

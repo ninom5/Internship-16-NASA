@@ -7,17 +7,14 @@ import Starfield from "./StarField";
 import EarthMaterial from "./EarthMaterial";
 import AtmosphereMesh from "./Atmosphere";
 
-// Define sunDirection as a THREE.Vector3 object
 const sunDirection = new THREE.Vector3(-2, 0.5, 1.5);
 
 const Earth = () => {
-  // Define the ref with the mesh type from THREE
   const ref = React.useRef<THREE.Mesh>(null);
 
-  // Rotate the earth
   useFrame(() => {
     if (ref.current) {
-      ref.current.rotation.y += 0.001;
+      ref.current.rotation.y += 0.0007;
     }
   });
 

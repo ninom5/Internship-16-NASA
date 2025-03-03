@@ -1,30 +1,7 @@
 import * as THREE from "three";
 import React from "react";
+import { SpriteProps, SpritesProps } from "../../types";
 
-// Type for the properties used in the getSprite function
-interface SpriteProps {
-  hasFog: boolean;
-  color: THREE.Color | string | number; // Allow color to be a HEX value, string, or THREE.Color
-  opacity: number;
-  path: string;
-  pos: THREE.Vector3;
-  size: number;
-}
-
-// Type for the properties used in the getSprites function
-interface SpritesProps {
-  hasFog?: boolean;
-  hue?: number;
-  numSprites?: number;
-  opacity?: number;
-  path?: string;
-  radius?: number;
-  sat?: number;
-  size?: number;
-  z?: number;
-}
-
-// Create sprite with given properties
 function getSprite({
   hasFog,
   color,
@@ -42,18 +19,16 @@ function getSprite({
     opacity,
   });
 
-  // Adjust the color slightly
   spriteMat.color.offsetHSL(0, 0, Math.random() * 0.2 - 0.1);
 
   const sprite = new THREE.Sprite(spriteMat);
-  sprite.position.set(pos.x, -pos.y, pos.z); // Flipping the Y-axis
-  size += Math.random() - 0.5; // Slight random variation in size
+  sprite.position.set(pos.x, -pos.y, pos.z);
+  size += Math.random() - 0.5;
   sprite.scale.set(size, size, size);
-  sprite.material.rotation = 0; // No rotation applied
+  sprite.material.rotation = 0;
   return sprite;
 }
 
-// Generate a group of sprites with random positioning
 function getSprites({
   hasFog = true,
   hue = 0.65,
@@ -81,7 +56,6 @@ function getSprites({
   return layerGroup;
 }
 
-// Nebula component using the generated sprites
 const Nebula: React.FC = () => {
   const sprites = getSprites({
     numSprites: 8,

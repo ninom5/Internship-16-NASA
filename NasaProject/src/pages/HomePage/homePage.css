@@ -9,6 +9,7 @@
 }
 
 canvas {
-  min-height: 50vh;
-  max-height: 80vh;
+  width: auto;
+  min-height: 80vh;
+  max-height: 90vh;
 }

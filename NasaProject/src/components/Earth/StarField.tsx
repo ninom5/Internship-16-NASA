@@ -1,20 +1,8 @@
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import React from "react";
+import { StarPoint, StarProps } from "../../types";
 
-// Type for the properties used in getPoints
-interface StarProps {
-  numStars?: number;
-}
-
-// Type for the result of randomSpherePoint
-interface StarPoint {
-  pos: THREE.Vector3;
-  update: (t: number) => number;
-  minDist: number;
-}
-
-// Function to generate random points for stars in a sphere
 function getPoints({ numStars = 500 }: StarProps = {}): THREE.Points {
   function randomSpherePoint(): StarPoint {
     const radius = Math.random() * 25 + 25;
@@ -45,7 +33,6 @@ function getPoints({ numStars = 500 }: StarProps = {}): THREE.Points {
   const positions: StarPoint[] = [];
   let col: THREE.Color;
 
-  // Generate stars
   for (let i = 0; i < numStars; i += 1) {
     let p = randomSpherePoint();
     const { pos } = p;
@@ -67,7 +54,6 @@ function getPoints({ numStars = 500 }: StarProps = {}): THREE.Points {
 
   const points = new THREE.Points(geo, mat);
 
-  // Update function for animating the points
   function update(t: number) {
     points.rotation.y -= 0.0002;
     const updatedColors: number[] = [];
@@ -89,7 +75,6 @@ function getPoints({ numStars = 500 }: StarProps = {}): THREE.Points {
   return points;
 }
 
-// Starfield component
 const Starfield: React.FC = () => {
   const ref = React.useRef<THREE.Points>(null);
   const points = getPoints({ numStars: 3000 });
