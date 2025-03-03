@@ -1,0 +1,44 @@
+.not-found-page {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.not-found-text {
+  position: relative;
+  z-index: 1;
+  font-size: 2rem;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.falling-text {
+  position: relative;
+}
+
+.falling-letter {
+  position: absolute;
+  display: inline-block;
+  font-size: 2rem;
+  transform-origin: 50% 50%;
+  opacity: 1;
+  animation: moveInCircle 30s infinite linear;
+}
+
+@keyframes moveInCircle {
+  0% {
+    transform: rotate(0deg) translateY(-200px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateY(-200px) rotate(360deg);
+  }
+}
+
+.falling-text span {
+  animation-delay: calc(1s * var(--n));
+  transform-origin: center center;
+}

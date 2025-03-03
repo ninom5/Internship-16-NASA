@@ -2,6 +2,7 @@
 @import "tailwindcss";
 @import "./components/Header/header.css";
 @import "./pages/HomePage/homePage.css";
+@import "./pages/NotFoundPage/notFoundPage.css";
 @import "./variables.css";
 
 * {

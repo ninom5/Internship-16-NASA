@@ -5,4 +5,5 @@ export const routes: Routes = {
   ASTRONOMY: "/astronomy",
   EOT: "/eot",
   MARS: "/marsRoverPhotos",
+  NOT_FOUND: "*",
 };
