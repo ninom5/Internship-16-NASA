@@ -1,21 +1,31 @@
 import * as THREE from "three";
 import React from "react";
-import { useFrame, useLoader } from "@react-three/fiber";
+import { useLoader } from "@react-three/fiber";
 
-export const Mars = () => {
+interface MarsProps {
+  onClick?: () => void;
+}
+
+export const Mars = ({ onClick }: MarsProps) => {
   const ref = React.useRef<THREE.Mesh>(null);
-
   const marsTexture = useLoader(
     THREE.TextureLoader,
     "./textures/mars_1k_color.jpg"
   );
 
-  useFrame(() => {
-    if (ref.current) ref.current.rotation.y += 0.0003;
-  });
+  const handleClick = (event: React.MouseEvent) => {
+    if (onClick) {
+      onClick();
+    }
+  };
 
   return (
-    <mesh ref={ref} position={[20, 0, 5]} scale={[1.5, 1.5, 1.5]}>
+    <mesh
+      ref={ref}
+      position={[22, 2, -17]}
+      scale={[1.5, 1.5, 1.5]}
+      onClick={handleClick}
+    >
       <icosahedronGeometry args={[1.2, 64]} />
       <meshStandardMaterial map={marsTexture} />
     </mesh>
