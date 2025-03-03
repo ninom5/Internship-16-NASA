@@ -1,7 +1,7 @@
-import axios from "axios";
 import { Rover } from "../../contexts/marsrover-context";
 import { useEffect, useReducer } from "react";
 import { MarsRoverAction } from "../../types/marsRoverActionType";
+import { fetchMarsRoverData } from "../../services/marsRoverServices";
 
 interface State {
   rovers: Rover[];
@@ -30,24 +30,16 @@ const marsRoverReducer = (state: State, action: MarsRoverAction): State => {
 };
 
 export const useFetchMarsRovers = () => {
-  const apiKey = import.meta.env.VITE_NASA_API_KEY;
-  const baseUrl = `https://api.nasa.gov/mars-photos/api/v1/rovers`;
-
   const [state, dispatch] = useReducer(marsRoverReducer, initialState);
 
   useEffect(() => {
     const fetchMarsImages = async () => {
       dispatch({ type: "FETCH_REQUEST" });
       try {
-        const response = await axios.get(baseUrl, {
-          params: {
-            api_key: apiKey,
-          },
-        });
+        const rovers = await fetchMarsRoverData();
+        console.log(rovers);
 
-        console.log(response);
-
-        dispatch({ type: "FETCH_SUCCESS", payload: response.data.rovers });
+        dispatch({ type: "FETCH_SUCCESS", payload: rovers });
       } catch (error) {
         dispatch({
           type: "FETCH_FAILURE",

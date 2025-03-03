@@ -1,13 +1,7 @@
 import { useEffect, useReducer } from "react";
-import axios from "axios";
+import { fetchApodImages } from "../../services/apodServices";
 import { ApodAction } from "../../types/apodActionType";
-
-interface ApodData {
-  mediaUrl: string | null;
-  description: string;
-  date: string;
-  mediaType: string;
-}
+import { ApodData } from "../../types";
 
 const initialState = {
   data: [] as ApodData[],
@@ -34,9 +28,6 @@ const apodReducer = (state: typeof initialState, action: ApodAction) => {
 };
 
 export const useFetchApod = () => {
-  const apiKey = import.meta.env.VITE_NASA_API_KEY;
-  const baseUrl = `https://api.nasa.gov/planetary/apod`;
-
   const [state, dispatch] = useReducer(apodReducer, initialState);
 
   useEffect(() => {
@@ -50,20 +41,10 @@ export const useFetchApod = () => {
         const startDateString = startDate.toISOString().split("T")[0];
         const endDateString = today.toISOString().split("T")[0];
 
-        const response = await axios.get(baseUrl, {
-          params: {
-            api_key: apiKey,
-            start_date: startDateString,
-            end_date: endDateString,
-          },
-        });
-
-        const fetchedImages = response.data.map((item: any) => ({
-          mediaUrl: item.url,
-          description: item.explanation,
-          date: item.date,
-          mediaType: item.media_type,
-        }));
+        const fetchedImages = await fetchApodImages(
+          startDateString,
+          endDateString
+        );
 
         dispatch({ type: "FETCH_SUCCESS", payload: fetchedImages });
       } catch (error) {

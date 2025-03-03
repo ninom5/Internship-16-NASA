@@ -7,6 +7,8 @@ export const MarsRoverPage = () => {
 
   if (error) return <div>Error: {error}</div>;
 
+  if (!rovers || rovers.length === 0) return <div>No rovers available.</div>;
+
   return (
     <>
       <h1>mars</h1>
