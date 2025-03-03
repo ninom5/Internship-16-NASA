@@ -6,6 +6,7 @@ import Nebula from "./Nebula";
 import Starfield from "./StarField";
 import EarthMaterial from "./EarthMaterial";
 import AtmosphereMesh from "./Atmosphere";
+import { Mars } from "./Mars";
 
 const sunDirection = new THREE.Vector3(-2, 0.5, 1.5);
 
@@ -38,6 +39,7 @@ export const EarthComponent = () => {
       gl={{ toneMapping: THREE.NoToneMapping }}
     >
       <Earth />
+      <Mars />
       <hemisphereLight args={[0xffffff, 0x000000, 3.0]} />
       <directionalLight position={[x, y, z]} />
       <Nebula />
