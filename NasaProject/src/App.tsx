@@ -3,6 +3,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import { ErrorFallback } from "./components/ErrorBoundary/ErrorFallback.tsx";
 import { ThemeProvider } from "./contexts/theme-context/ThemeProvider.tsx";
 import { ApodProvider } from "./contexts/APOD-context/ApodProvider.tsx";
+import { MarsRoverProvider } from "./contexts/marsrover-context/MarsRoverProvider.tsx";
 
 const App: React.FC = () => {
   const handleError = (error: Error, info: React.ErrorInfo) => {
@@ -13,7 +14,9 @@ const App: React.FC = () => {
     <ErrorBoundary FallbackComponent={ErrorFallback} onError={handleError}>
       <ThemeProvider>
         <ApodProvider>
-          <Router />
+          <MarsRoverProvider>
+            <Router />
+          </MarsRoverProvider>
         </ApodProvider>
       </ThemeProvider>
     </ErrorBoundary>
