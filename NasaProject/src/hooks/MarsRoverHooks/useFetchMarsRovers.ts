@@ -1,20 +1,13 @@
 import axios from "axios";
-import { Rover } from "../contexts/marsrover-context";
+import { Rover } from "../../contexts/marsrover-context";
 import { useEffect, useReducer } from "react";
+import { MarsRoverAction } from "../../types/marsRoverActionType";
 
 interface State {
   rovers: Rover[];
   loading: boolean;
   error: string | null;
 }
-
-type MarsRoverAction =
-  | { type: "FETCH_REQUEST" }
-  | {
-      type: "FETCH_SUCCESS";
-      payload: Rover[];
-    }
-  | { type: "FETCH_FAILURE"; payload: string };
 
 const initialState = {
   rovers: [],

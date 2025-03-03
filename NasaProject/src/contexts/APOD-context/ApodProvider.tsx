@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from "react";
 import { ApodContext } from "./ApodContext";
-import { useFetchApod } from "../../hooks/useFetchApod";
+import { useFetchApod } from "../../hooks/ApodHooks/useFetchApod";
 
 export const ApodProvider: FC<PropsWithChildren> = ({ children }) => {
   const state = useFetchApod();

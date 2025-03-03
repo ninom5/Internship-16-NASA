@@ -1,5 +1,4 @@
-import { div, li } from "motion/react-client";
-import { useMarsRovers } from "../../hooks/useMarsRovers";
+import { useMarsRovers } from "../../hooks/MarsRoverHooks/useMarsRovers.ts";
 
 export const MarsRoverPage = () => {
   const { rovers, loading, error } = useMarsRovers();

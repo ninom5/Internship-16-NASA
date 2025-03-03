@@ -1,4 +1,4 @@
-import { useApod } from "../../hooks/useApod";
+import { useApod } from "../../hooks/ApodHooks/useApod";
 
 export const ApodImage: React.FC = () => {
   const { data, loading, error } = useApod();

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ApodContext } from "../contexts/APOD-context";
+import { ApodContext } from "../../contexts/APOD-context";
 
 export const useApod = () => {
   const context = useContext(ApodContext);

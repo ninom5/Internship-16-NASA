@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from "react";
 import axios from "axios";
-import { start } from "repl";
+import { ApodAction } from "../../types/apodActionType";
 
 interface ApodData {
   mediaUrl: string | null;
@@ -8,14 +8,6 @@ interface ApodData {
   date: string;
   mediaType: string;
 }
-
-type ApodAction =
-  | { type: "FETCH_REQUEST" }
-  | {
-      type: "FETCH_SUCCESS";
-      payload: ApodData[];
-    }
-  | { type: "FETCH_FAILURE"; payload: string };
 
 const initialState = {
   data: [] as ApodData[],

@@ -1,5 +1,5 @@
 import { FC, PropsWithChildren } from "react";
-import { useFetchMarsRovers } from "../../hooks/useFetchMarsRovers";
+import { useFetchMarsRovers } from "../../hooks/MarsRoverHooks/useFetchMarsRovers";
 import { MarsRoverContext } from "./MarsRoverContext";
 
 export const MarsRoverProvider: FC<PropsWithChildren> = ({ children }) => {
