@@ -1,21 +1,38 @@
-.header {
-  width: 100%;
-  height: auto;
-  padding: 20px;
-  background-color: transparent;
-}
-
 .header-navigation {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  height: auto;
   padding: 20px;
+  position: relative;
 }
 
 .header-navigation a {
-  font-size: 30px;
+  font-size: 25px;
   text-decoration: none;
-  color: black;
+  color: var(--galaxy-teal);
+  position: relative;
+  transition: color 0.3s ease-in-out;
+  font-family: var(--font-family-main);
+  font-weight: 550;
+}
+
+.underline {
+  position: absolute;
+  bottom: 0;
+  height: 3px;
+  background-color: var(--nebula-purple);
+  transition: left 0.7s ease, width 0.7s ease;
+}
+
+.header-navigation a.active {
+  font-weight: bold;
+  color: var(--space-blue);
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+.header-navigation a:hover {
+  color: var(--nebula-purple);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
