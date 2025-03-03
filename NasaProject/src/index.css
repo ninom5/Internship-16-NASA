@@ -2,6 +2,7 @@
 @import "tailwindcss";
 @import "./components/Header/header.css";
 @import "./components/Hero/hero.css";
+@import "./pages/HomePage/homePage.css";
 @import "./variables.css";
 
 * {
@@ -10,5 +11,5 @@
   box-sizing: border-box;
 }
 body {
-  background: linear-gradient(135deg, lightgray, #1e2a47);
+  background: linear-gradient(135deg, lightgray, var(--space-blue));
 }
