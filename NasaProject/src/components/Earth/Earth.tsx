@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useNavigate } from "react-router-dom";
@@ -12,8 +12,16 @@ import { Mars } from "./Mars";
 
 const sunDirection = new THREE.Vector3(-2, 0.5, 1.5);
 
-const Earth = () => {
+const Earth = ({ onLoad }: { onLoad?: () => void }) => {
   const ref = React.useRef<THREE.Mesh>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    if (ref.current && !isLoaded) {
+      setIsLoaded(true);
+      if (onLoad) onLoad();
+    }
+  }, [isLoaded, onLoad]);
 
   useFrame(() => {
     if (ref.current) {
@@ -63,7 +71,7 @@ const Earth = () => {
 //   return null;
 // };
 
-export const EarthComponent = () => {
+export const EarthComponent = ({ onLoad }: { onLoad?: () => void }) => {
   const navigate = useNavigate();
 
   const handleMarsClick = () => {
@@ -76,7 +84,7 @@ export const EarthComponent = () => {
       gl={{ toneMapping: THREE.NoToneMapping, alpha: true }}
     >
       {/* <CameraController /> */}
-      <Earth />
+      <Earth onLoad={onLoad} />
       <Mars onClick={handleMarsClick} />{" "}
       <hemisphereLight args={[0xffffff, 0x000000, 3.0]} />
       <directionalLight position={[-2, 0.5, 1.5]} />

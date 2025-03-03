@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { SwitchButton } from "../TailwindComponents/SwitchButton";
 
 export const Header: React.FC = () => {
   const [underlineStyle, setUnderlineStyle] = useState<{
@@ -45,10 +44,7 @@ export const Header: React.FC = () => {
   }, [location.pathname]);
 
   return (
-    <header
-      className="header flex items-center justify-between p-6 lg:px-8"
-      onMouseLeave={handleMouseLeave}
-    >
+    <header className="header fixed-header" onMouseLeave={handleMouseLeave}>
       <nav ref={navRef} className="header-navigation">
         <div className="underline" style={underlineStyle}></div>
 
@@ -88,8 +84,6 @@ export const Header: React.FC = () => {
           Earth Imagery
         </Link>
       </nav>
-
-      <SwitchButton />
     </header>
   );
 };

@@ -6,10 +6,21 @@
 .hero-section {
   width: 100%;
   height: auto;
+  position: relative;
+}
+.loading-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  font-size: 50px;
+  color: white;
 }
 
 canvas {
   width: auto;
-  min-height: 80vh;
+  min-height: 90vh;
   max-height: 90vh;
 }
