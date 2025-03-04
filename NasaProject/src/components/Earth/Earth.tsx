@@ -71,6 +71,23 @@ const Earth = ({ onLoad }: { onLoad?: () => void }) => {
 //   return null;
 // };
 
+const ZoomInEffect = () => {
+  const { camera } = useThree();
+  const [zoomingIn, setZoomingIn] = useState(true);
+
+  useEffect(() => {
+    setZoomingIn(true);
+  }, []);
+
+  useFrame(() => {
+    if (zoomingIn && camera.position.x > 0) {
+      camera.position.x -= 0.05;
+    } else setZoomingIn(false);
+  });
+
+  return null;
+};
+
 export const EarthComponent = ({ onLoad }: { onLoad?: () => void }) => {
   const navigate = useNavigate();
 
@@ -80,9 +97,10 @@ export const EarthComponent = ({ onLoad }: { onLoad?: () => void }) => {
 
   return (
     <Canvas
-      camera={{ position: [0, 0.1, 7] }}
+      camera={{ position: [100, 0.1, 7] }}
       gl={{ toneMapping: THREE.NoToneMapping, alpha: true }}
     >
+      <ZoomInEffect />
       {/* <CameraController /> */}
       <Earth onLoad={onLoad} />
       <Mars onClick={handleMarsClick} />{" "}
