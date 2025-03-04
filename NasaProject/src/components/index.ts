@@ -5,3 +5,4 @@ export * from "./ErrorBoundary/ErrorFallback";
 export * from "./Header/Header";
 export * from "./TailwindComponents/SwitchButton";
 export * from "./PreviousApodImages/PreviousApodImages";
+export * from "./MuiComponents/ApodDetails/ApodDetails";

@@ -8,6 +8,7 @@
 @import "./pages/NotFoundPage/notFoundPage.css";
 @import "./pages/AstronomyPage/astronomyPage.css";
 @import "./components/PreviousApodImages/PreviousApodImages.css";
+@import "./pages/ApodDetailsPage/apodDetailsPage.css";
 @import "./variables.css";
 
 * {
