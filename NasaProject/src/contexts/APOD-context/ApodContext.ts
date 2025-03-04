@@ -6,6 +6,8 @@ export interface ApodData {
   date: string;
   mediaType: string;
   title: string;
+  hdurl: string;
+  thumbnail_url: string | null;
 }
 
 export interface ApodContextType {

@@ -10,6 +10,7 @@ export const fetchApodImages = async (startDate: string, endDate: string) => {
         api_key: apiKey,
         start_date: startDate,
         end_date: endDate,
+        thumbs: true,
       },
     });
 
@@ -21,6 +22,8 @@ export const fetchApodImages = async (startDate: string, endDate: string) => {
       date: item.date,
       mediaType: item.media_type,
       title: item.title,
+      hdurl: item.hdurl,
+      thumbnail_url: item.thumbnail_url,
     }));
   } catch (error) {
     throw new Error("Error fetching apod images");

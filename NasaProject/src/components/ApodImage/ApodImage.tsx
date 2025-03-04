@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useApod } from "../../hooks";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const ApodImage: React.FC = () => {
   const { data, loading, error } = useApod();
@@ -24,6 +25,11 @@ export const ApodImage: React.FC = () => {
 
   const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newDate = event.target.value.toString();
+    if (newDate > currentDate) {
+      toast.error("Date can't be in future");
+      return;
+    }
+
     setDate(newDate);
   };
 

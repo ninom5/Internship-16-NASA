@@ -26,28 +26,13 @@ export const PreviousApodImages = () => {
                   {subItem.mediaType === "image" ? (
                     <div className="img-div">
                       <img
-                        src={subItem.mediaUrl ?? undefined}
+                        src={subItem.hdurl ?? undefined}
                         alt={subItem.title}
                         onClick={() =>
                           handleOnClickImage({ date: subItem.date })
                         }
                         className="h-auto max-w-full rounded-lg object-cover object-center"
                       />
-                    </div>
-                  ) : subItem.mediaUrl?.includes("youtube.com") ? (
-                    <div
-                      className="relative w-full"
-                      style={{ paddingBottom: "56.25%" }}
-                    >
-                      <iframe
-                        src={subItem.mediaUrl
-                          .replace("watch?v=", "embed/")
-                          .replace("youtube.com", "youtube-nocookie.com")}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                        title={subItem.title}
-                        className="absolute top-0 left-0 w-full h-full rounded-lg"
-                      ></iframe>
                     </div>
                   ) : subItem.mediaUrl?.endsWith(".html") ? (
                     <iframe
@@ -56,17 +41,16 @@ export const PreviousApodImages = () => {
                       height="500px"
                     ></iframe>
                   ) : (
-                    <video
-                      controls
-                      width="560"
-                      className="h-auto max-w-full rounded-lg object-cover object-center"
-                    >
-                      <source
-                        src={subItem.mediaUrl ?? undefined}
-                        type="video/mp4"
+                    <div className="img-div">
+                      <img
+                        src={subItem.thumbnail_url ?? undefined}
+                        alt={subItem.title}
+                        onClick={() =>
+                          handleOnClickImage({ date: subItem.date })
+                        }
+                        className="h-auto max-w-full rounded-lg object-cover object-center"
                       />
-                      Your browser does not support the video tag.
-                    </video>
+                    </div>
                   )}
                 </div>
               ))}
@@ -101,4 +85,37 @@ export const PreviousApodImages = () => {
           <p>{item.description}</p>
         </div>
       ))} */
+}
+
+{
+  /* {subItem.mediaType === "image" ?: subItem.mediaUrl?.includes("youtube.com") ? (
+                    <div
+                      className="relative w-full"
+                      style={{ paddingBottom: "56.25%" }}
+                    >
+                      <iframe
+                        src={subItem.mediaUrl
+                          .replace("watch?v=", "embed/")
+                          .replace("youtube.com", "youtube-nocookie.com")}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        title={subItem.title}
+                        className="absolute top-0 left-0 w-full h-full rounded-lg"
+                      ></iframe>
+                    </div>
+                  ) : subItem.mediaUrl?.endsWith(".html") ? (
+                    
+                  ) : (
+                    <video
+                      controls
+                      width="560"
+                      className="h-auto max-w-full rounded-lg object-cover object-center"
+                    >
+                      <source
+                        src={subItem.mediaUrl ?? undefined}
+                        type="video/mp4"
+                      />
+                      Your browser does not support the video tag.
+                    </video>
+                  )} */
 }

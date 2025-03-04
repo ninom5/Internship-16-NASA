@@ -1,3 +1,4 @@
 .img-div {
   display: flex;
+  cursor: pointer;
 }
