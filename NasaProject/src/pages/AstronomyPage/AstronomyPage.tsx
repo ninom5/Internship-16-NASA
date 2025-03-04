@@ -1,4 +1,4 @@
-import { ApodImage } from "../../components/ApodImage/ApodImage";
+import { ApodImage } from "../../components";
 
 export const AstronomyPage = () => {
   return (

@@ -1,5 +1,4 @@
-import { useMarsRovers } from "../../hooks/MarsRoverHooks/useMarsRovers.ts";
-
+import { useMarsRovers } from "../../hooks";
 export const MarsRoverPage = () => {
   const { rovers, loading, error } = useMarsRovers();
 

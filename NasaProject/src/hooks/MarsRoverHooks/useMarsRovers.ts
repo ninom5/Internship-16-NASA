@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { MarsRoverContext } from "../../contexts/marsrover-context";
+import { MarsRoverContext } from "../../contexts";
 
 export const useMarsRovers = () => {
   const context = useContext(MarsRoverContext);

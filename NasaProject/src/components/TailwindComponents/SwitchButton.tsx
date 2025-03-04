@@ -1,9 +1,12 @@
-import { ThemeContext } from "../../contexts/theme-context";
+import { ThemeContext } from "../../contexts";
 import { useContext } from "react";
+import { useEffect } from "react";
 
 export const SwitchButton = () => {
   const { isLightMode, toggleTheme } = useContext(ThemeContext);
-
+  useEffect(() => {
+    document.body.className = isLightMode ? "light-theme" : "dark-theme";
+  }, [isLightMode]);
   return (
     <label className="inline-flex items-center cursor-pointer">
       <input
