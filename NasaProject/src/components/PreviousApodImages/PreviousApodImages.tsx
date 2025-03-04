@@ -22,9 +22,9 @@ export const PreviousApodImages = () => {
           return (
             <div key={index} className="grid gap-4">
               {data.slice(index, index + 5).map((subItem, subIndex) => (
-                <div key={subIndex}>
+                <div key={subIndex} className="img-div">
                   {subItem.mediaType === "image" ? (
-                    <div>
+                    <div className="img-div">
                       <img
                         src={subItem.mediaUrl ?? undefined}
                         alt={subItem.title}

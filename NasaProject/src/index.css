@@ -7,6 +7,7 @@
 @import "./pages/HomePage/homePage.css";
 @import "./pages/NotFoundPage/notFoundPage.css";
 @import "./pages/AstronomyPage/astronomyPage.css";
+@import "./components/PreviousApodImages/PreviousApodImages.css";
 @import "./variables.css";
 
 * {
