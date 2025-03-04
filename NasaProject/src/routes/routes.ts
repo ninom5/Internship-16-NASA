@@ -5,5 +5,6 @@ export const routes: Routes = {
   ASTRONOMY: "/astronomy",
   NEO: "/neo",
   MARS: "/marsRoverPhotos",
+  ASTRONOMY_DETAILS: "/astronomy/:routeParameter",
   NOT_FOUND: "*",
 };

@@ -1,7 +1,13 @@
 import { useApod } from "../../hooks";
+import { useNavigate } from "react-router-dom";
 
 export const PreviousApodImages = () => {
   const { data, loading, error } = useApod();
+  const navigate = useNavigate();
+
+  const handleOnClickImage = ({ date }: { date: string }) => {
+    navigate(`/astronomy/${date}`);
+  };
 
   if (loading) return <h2>loading...</h2>;
 
@@ -10,35 +16,65 @@ export const PreviousApodImages = () => {
   if (!data || data.length === 0) return <h3>No data ??</h3>;
 
   return (
-    <div>
-      {data.map((item, index) => (
-        <div key={index}>
-          <h1>{item.title}</h1>
-          <h2>{item.date}</h2>
-
-          {item.mediaType === "image" ? (
-            <img src={item.mediaUrl ?? undefined} alt={item.title} />
-          ) : item.mediaUrl?.includes("youtube.com") ? (
-            <iframe
-              width="560"
-              height="315"
-              src={item.mediaUrl
-                .replace("watch?v=", "embed/")
-                .replace("youtube.com", "youtube-nocookie.com")}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              title={item.title}
-            ></iframe>
-          ) : item.mediaUrl?.endsWith(".html") ? (
-            <iframe src={item.mediaUrl} width="100%" height="500px"></iframe>
-          ) : (
-            <video controls width="560">
-              <source src={item.mediaUrl ?? undefined} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          )}
-        </div>
-      ))}
+    <div className="grid grid-cols-2 gap-4 md:grid-cols-4" id="gallery">
+      {data.map((item, index) => {
+        if (index % 5 === 0) {
+          return (
+            <div key={index} className="grid gap-4">
+              {data.slice(index, index + 5).map((subItem, subIndex) => (
+                <div key={subIndex}>
+                  {subItem.mediaType === "image" ? (
+                    <div>
+                      <img
+                        src={subItem.mediaUrl ?? undefined}
+                        alt={subItem.title}
+                        onClick={() =>
+                          handleOnClickImage({ date: subItem.date })
+                        }
+                        className="h-auto max-w-full rounded-lg object-cover object-center"
+                      />
+                    </div>
+                  ) : subItem.mediaUrl?.includes("youtube.com") ? (
+                    <div
+                      className="relative w-full"
+                      style={{ paddingBottom: "56.25%" }}
+                    >
+                      <iframe
+                        src={subItem.mediaUrl
+                          .replace("watch?v=", "embed/")
+                          .replace("youtube.com", "youtube-nocookie.com")}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        title={subItem.title}
+                        className="absolute top-0 left-0 w-full h-full rounded-lg"
+                      ></iframe>
+                    </div>
+                  ) : subItem.mediaUrl?.endsWith(".html") ? (
+                    <iframe
+                      src={subItem.mediaUrl}
+                      width="100%"
+                      height="500px"
+                    ></iframe>
+                  ) : (
+                    <video
+                      controls
+                      width="560"
+                      className="h-auto max-w-full rounded-lg object-cover object-center"
+                    >
+                      <source
+                        src={subItem.mediaUrl ?? undefined}
+                        type="video/mp4"
+                      />
+                      Your browser does not support the video tag.
+                    </video>
+                  )}
+                </div>
+              ))}
+            </div>
+          );
+        }
+        return null;
+      })}
     </div>
   );
 };
