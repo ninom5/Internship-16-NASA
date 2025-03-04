@@ -1,10 +1,11 @@
 import { ApodImage } from "../../components";
+import { PreviousApodImages } from "../../components";
 
 export const AstronomyPage = () => {
   return (
-    <>
-      Astronomy
+    <div className="astronomy-page">
       <ApodImage />
-    </>
+      <PreviousApodImages />
+    </div>
   );
 };

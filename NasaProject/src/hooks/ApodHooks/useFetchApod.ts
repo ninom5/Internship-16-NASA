@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from "react";
 import { fetchApodImages } from "../../services/apodServices";
-import { ApodAction } from "../../types/apodActionType";
+import { ApodAction } from "../../types";
 import { ApodData } from "../../types";
 
 const initialState = {

@@ -3,4 +3,5 @@ export interface ApodData {
   description: string;
   date: string;
   mediaType: string;
+  title: string;
 }

@@ -2,9 +2,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import "tailwindcss";
 @import "./components/Header/header.css";
+@import "./components/AboutPage/aboutPage.css";
+@import "./components/ApodImage/apodImage.css";
 @import "./pages/HomePage/homePage.css";
 @import "./pages/NotFoundPage/notFoundPage.css";
-@import "./components/AboutPage/aboutPage.css";
+@import "./pages/AstronomyPage/astronomyPage.css";
 @import "./variables.css";
 
 * {

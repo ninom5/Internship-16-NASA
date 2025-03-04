@@ -1,36 +1,27 @@
-import { useApod } from "../../hooks/ApodHooks/useApod";
+import { useApod } from "../../hooks";
 
 export const ApodImage: React.FC = () => {
   const { data, loading, error } = useApod();
+  const currentDate = new Date().toISOString().split("T")[0];
 
   if (loading) return <div>loading</div>;
 
   if (error) return <div>error: {error}</div>;
 
+  const todayImg = data.find((img) => img.date === currentDate);
+
   return (
-    <div>
-      <h1>APOD: Astronomy Pictures of the Last 20 Days</h1>
-      {data.map((item, index) => (
-        <div key={index}>
-          <h2>{item.date}</h2>
-          {item.mediaType === "image" && item.mediaUrl && (
-            <img
-              src={item.mediaUrl}
-              alt={`Astronomy Picture of the Day - ${item.date}`}
-              style={{ width: "100%", maxWidth: "600px" }}
-            />
-          )}
-          {item.mediaType === "video" && item.mediaUrl && (
-            <div>
-              <p>{item.description}</p>
-              <a href={item.mediaUrl} target="_blank" rel="noopener noreferrer">
-                Watch the video or interact with the content here
-              </a>
-            </div>
-          )}
-          <p>{item.description}</p>
+    <section className="apod-section">
+      <h1>APOD: Astronomy Picture of the Day</h1>
+      {todayImg && (
+        <div className="image-container">
+          <img
+            src={todayImg.mediaUrl ?? undefined}
+            alt="Astronomy picture of the day"
+            id="image-of-the-day"
+          />
         </div>
-      ))}
-    </div>
+      )}
+    </section>
   );
 };

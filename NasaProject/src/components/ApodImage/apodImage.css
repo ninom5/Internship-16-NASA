@@ -1,0 +1,32 @@
+.apod-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.apod-section h1 {
+  font-size: 40px;
+  font-weight: 550;
+  color: var(--galaxy-teal);
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: auto;
+  max-height: 60vh;
+}
+#image-of-the-day {
+  width: auto;
+  max-width: 100%;
+  max-height: inherit;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}

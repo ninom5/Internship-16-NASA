@@ -13,11 +13,14 @@ export const fetchApodImages = async (startDate: string, endDate: string) => {
       },
     });
 
+    console.log(response.data);
+
     return response.data.map((item: any) => ({
       mediaUrl: item.url,
       description: item.explanation,
       date: item.date,
       mediaType: item.media_type,
+      title: item.title,
     }));
   } catch (error) {
     throw new Error("Error fetching apod images");

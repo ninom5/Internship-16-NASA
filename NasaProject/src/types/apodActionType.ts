@@ -1,4 +1,4 @@
-import { ApodData } from "../contexts/APOD-context";
+import { ApodData } from "../contexts";
 
 export type ApodAction =
   | { type: "FETCH_REQUEST" }
