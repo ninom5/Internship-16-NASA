@@ -4,6 +4,7 @@
 @import "./components/Header/header.css";
 @import "./pages/HomePage/homePage.css";
 @import "./pages/NotFoundPage/notFoundPage.css";
+@import "./components/AboutPage/aboutPage.css";
 @import "./variables.css";
 
 * {
@@ -12,5 +13,8 @@
   box-sizing: border-box;
 }
 body {
-  background: linear-gradient(135deg, lightgray, var(--space-blue));
+  /* background: linear-gradient(to right, lightgray, var(--space-blue)); */
+  background-color: var(--space-blue);
+  /* background-color: black; */
+  /* background-color: white; */
 }

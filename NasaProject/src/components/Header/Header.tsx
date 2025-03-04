@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import nasaLogo from "../../assets/images/58429400a6515b1e0ad75acc.png";
 
 export const Header: React.FC = () => {
   const [underlineStyle, setUnderlineStyle] = useState<{
@@ -46,6 +47,7 @@ export const Header: React.FC = () => {
   return (
     <header className="header fixed-header" onMouseLeave={handleMouseLeave}>
       <nav ref={navRef} className="header-navigation">
+        <img src={nasaLogo} alt="nasa logo" id="nasa-logo" />
         <div className="underline" style={underlineStyle}></div>
 
         <Link

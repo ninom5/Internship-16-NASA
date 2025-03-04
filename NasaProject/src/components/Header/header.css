@@ -3,19 +3,30 @@
   top: 0;
   left: 0;
   width: 100%;
+  height: auto;
   z-index: 1000;
 }
+
+#nasa-logo {
+  width: 100px;
+  height: auto;
+  margin-right: auto;
+  padding: 10px;
+}
+
 .header-navigation {
   display: flex;
-  justify-content: space-evenly;
+  gap: 75px;
+  justify-content: flex-end;
   align-items: center;
   width: 100%;
-  padding: 20px;
+  height: auto;
+  padding-right: 150px;
   position: relative;
 }
 
 .header-navigation a {
-  font-size: 25px;
+  font-size: 20px;
   text-decoration: none;
   color: var(--galaxy-teal);
   position: relative;
@@ -26,7 +37,7 @@
 
 .underline {
   position: absolute;
-  bottom: 0;
+  bottom: 17px;
   height: 3px;
   background-color: var(--nebula-purple);
   transition: left 0.7s ease, width 0.7s ease;
@@ -34,7 +45,7 @@
 
 .header-navigation a.active {
   font-weight: bold;
-  color: var(--space-blue);
+  color: var(--light-gray);
   border-radius: 4px;
   padding: 4px 8px;
 }

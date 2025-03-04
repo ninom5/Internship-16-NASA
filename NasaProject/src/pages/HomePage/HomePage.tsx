@@ -1,5 +1,6 @@
 import { useState } from "react";
 import EarthComponent from "../../components/Earth/Earth";
+import { AboutPage } from "../../components/AboutPage/AboutPage";
 // import { FeatureCard } from "../../components/FeatureCard/FeatureCard";
 
 export const HomePage = () => {
@@ -15,6 +16,8 @@ export const HomePage = () => {
         <EarthComponent onLoad={() => setIsLoading(false)} />
         <p>Try clicking on mars</p>
       </section>
+
+      <AboutPage />
       {/* <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
         <FeatureCard
           title="Astronomy Picture of the Day"
