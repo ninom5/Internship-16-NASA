@@ -9,6 +9,7 @@
 @import "./pages/AstronomyPage/astronomyPage.css";
 @import "./components/PreviousApodImages/PreviousApodImages.css";
 @import "./pages/ApodDetailsPage/apodDetailsPage.css";
+@import "./components/MuiComponents/ApodDetails/apodDetails.css";
 @import "./variables.css";
 
 * {
