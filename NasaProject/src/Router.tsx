@@ -7,6 +7,7 @@ import {
   Layout,
   MarsRoverPage,
   NotFoundPage,
+  MarsDetailsPage,
 } from "./pages";
 
 export const Router = () => {
@@ -21,6 +22,7 @@ export const Router = () => {
             path={routes.ASTRONOMY_DETAILS}
             element={<ApodDetailsPage />}
           />
+          <Route path={routes.MARS_DETAILS} element={<MarsDetailsPage />} />
           <Route path={routes.NOT_FOUND} element={<NotFoundPage />} />
         </Route>
       </Routes>

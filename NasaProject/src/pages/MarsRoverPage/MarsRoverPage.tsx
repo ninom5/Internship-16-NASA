@@ -1,44 +1,53 @@
 import { useFetchMarsRovers } from "../../hooks";
+import { useNavigate } from "react-router-dom";
 
 export const MarsRoverPage = () => {
   const { photos, loading, error, nextPage, prevPage, currentPage } =
     useFetchMarsRovers();
+  const navigate = useNavigate();
+  const handleOnClickImage = (id: number) => {
+    navigate(`/marsRoverPhotos/${id}`);
+  };
+
+  if (loading) return <div>loading...</div>;
+  if (error) return <div>error: {error}</div>;
 
   return (
-    <div>
-      <h1>Mars Rover Photos</h1>
+    <section className="rovers-gallery">
+      <h1 className="rovers-heading">Mars Rover Photos</h1>
 
-      {loading && <div>Loading...</div>}
-      {error && <div>Error: {error}</div>}
-      {photos.length === 0 && !loading && <div>No photos available</div>}
-
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(5, 1fr)",
-          gap: "10px",
-        }}
-      >
-        {photos.map((photo) => (
-          <div key={photo.id}>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 gallery">
+        {photos.map((img, index) => (
+          <div key={index} className="overflow-hidden rounded-lg">
             <img
-              src={photo.img_src}
-              alt={`Mars Rover ${photo.rover.name}`}
-              width="200px"
+              src={img.img_src}
+              alt={`Gallery image ${index + 1}`}
+              className="w-full h-auto object-cover"
+              onClick={() => handleOnClickImage(img.id)}
             />
           </div>
         ))}
       </div>
 
-      <div style={{ marginTop: "20px" }}>
-        <button onClick={prevPage} disabled={currentPage === 1 || loading}>
-          Previous Page
+      <div className="pages-buttons">
+        <button
+          onClick={prevPage}
+          disabled={currentPage === 1 || loading}
+          className="change-page-button"
+          id="prev-button"
+        >
+          &laquo; Previous Page
         </button>
         <span style={{ margin: "0 15px" }}>Page {currentPage}</span>
-        <button onClick={nextPage} disabled={loading}>
-          Next Page
+
+        <button
+          onClick={nextPage}
+          disabled={loading}
+          className="change-page-button"
+        >
+          Next Page &raquo;
         </button>
       </div>
-    </div>
+    </section>
   );
 };

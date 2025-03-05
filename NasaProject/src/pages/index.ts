@@ -4,3 +4,4 @@ export * from "./AstronomyPage/AstronomyPage";
 export * from "./MarsRoverPage/MarsRoverPage";
 export * from "./NotFoundPage/NotFoundPage";
 export * from "./ApodDetailsPage/ApodDetailsPage";
+export * from "./MarsDetailsPage/MarsDeatilsPage";

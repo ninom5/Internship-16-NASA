@@ -11,6 +11,8 @@
 @import "./pages/ApodDetailsPage/apodDetailsPage.css";
 @import "./components/MuiComponents/ApodDetails/apodDetails.css";
 @import "./pages/MarsRoverPage/marsRoverPage.css";
+@import "./pages/MarsDetailsPage/marsDetailsPage.css";
+@import "./components/MuiComponents/MarsDetailsCard/marsDetailsCard.css";
 @import "./variables.css";
 
 * {

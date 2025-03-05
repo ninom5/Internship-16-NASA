@@ -26,7 +26,7 @@ export interface RoverPhoto {
 
 export interface MarsRoverContextType {
   // photosByPage: { [page: number]: RoverPhoto[] };
-  allPhotos: RoverPhoto[];
+  photos: RoverPhoto[];
   // currentPage: number;
   loading: boolean;
   error: string | null;
@@ -35,7 +35,7 @@ export interface MarsRoverContextType {
 }
 
 export const MarsRoverContext = createContext<MarsRoverContextType>({
-  allPhotos: [],
+  photos: [],
   // currentPage: 1,
   loading: true,
   error: null,

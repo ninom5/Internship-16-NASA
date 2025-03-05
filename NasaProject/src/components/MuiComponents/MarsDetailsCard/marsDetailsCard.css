@@ -1,0 +1,22 @@
+.mars-rover-card {
+  display: flex;
+  max-width: 50%;
+  margin: auto;
+  padding: 20px;
+  height: auto;
+  box-shadow: 2px 2px white;
+}
+
+.mars-rover-card__image {
+  max-width: 400px;
+  height: auto;
+  border-radius: 6px;
+}
+
+.mars-rover-card__content {
+  font-size: 20px;
+}
+
+#camera-info {
+  margin: 20px 0 10px;
+}
