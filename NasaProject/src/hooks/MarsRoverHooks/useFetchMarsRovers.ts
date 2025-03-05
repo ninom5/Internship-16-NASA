@@ -1,6 +1,7 @@
 import { useEffect, useReducer, useState } from "react";
 import { fetchMarsRoverData } from "../../services/marsRoverServices";
 import { RoverPhoto } from "../../contexts";
+import { MarsRoverAction } from "../../types";
 
 interface State {
   allPhotos: RoverPhoto[];
@@ -13,19 +14,6 @@ const initialState: State = {
   loading: false,
   error: null,
 };
-
-// const initialState: State = {
-//   allPhotos: [] as RoverPhoto[],
-//   loading: true,
-//   error: null as string | null,
-// };
-
-//ovde ovo zakomentirat i importat vec postojeci marsRoverAction
-type MarsRoverAction =
-  | { type: "FETCH_REQUEST" }
-  | { type: "FETCH_SUCCESS"; payload: RoverPhoto[] }
-  | { type: "FETCH_FAILURE"; payload: string };
-//--------------------------------------------------------------
 
 const marsRoverReducer = (state: State, action: MarsRoverAction): State => {
   switch (action.type) {
