@@ -14,10 +14,18 @@ const initialState: State = {
   error: null,
 };
 
+// const initialState: State = {
+//   allPhotos: [] as RoverPhoto[],
+//   loading: true,
+//   error: null as string | null,
+// };
+
+//ovde ovo zakomentirat i importat vec postojeci marsRoverAction
 type MarsRoverAction =
   | { type: "FETCH_REQUEST" }
   | { type: "FETCH_SUCCESS"; payload: RoverPhoto[] }
   | { type: "FETCH_FAILURE"; payload: string };
+//--------------------------------------------------------------
 
 const marsRoverReducer = (state: State, action: MarsRoverAction): State => {
   switch (action.type) {
