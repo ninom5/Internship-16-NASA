@@ -20,20 +20,25 @@ export interface RoverPhoto {
   sol: number;
   camera: Camera;
   img_src: string;
-  earthDate: string;
+  earth_date: string;
   rover: Rover;
 }
 
 export interface MarsRoverContextType {
-  photos: RoverPhoto[];
+  // photosByPage: { [page: number]: RoverPhoto[] };
+  allPhotos: RoverPhoto[];
+  // currentPage: number;
   loading: boolean;
   error: string | null;
-  fetchNextPage: () => void;
+  // fetchNextPage: () => void;
+  // fetchPreviousPage: () => void;
 }
 
 export const MarsRoverContext = createContext<MarsRoverContextType>({
-  photos: [],
+  allPhotos: [],
+  // currentPage: 1,
   loading: true,
   error: null,
-  fetchNextPage: () => {},
+  // fetchNextPage: () => {},
+  // fetchPreviousPage: () => {},
 });
