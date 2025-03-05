@@ -38,49 +38,38 @@ export const useFetchMarsRovers = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [currentPage, setCurrentPage] = useState(1);
 
-  useEffect(() => {
-    const fetchMarsImages = async () => {
-      dispatch({ type: "FETCH_REQUEST" });
-      try {
-        let allPhotos: RoverPhoto[] = [];
-        let page = currentPage;
-        let dateToFetch = new Date(currentDate);
+  const fetchData = async (date: Date, page: number) => {
+    dispatch({ type: "FETCH_REQUEST" });
+    try {
+      const fetchedImages = await fetchMarsRoverData(date, page);
 
-        while (true) {
-          const photos = await fetchMarsRoverData(dateToFetch, page);
-
-          if (photos.length === 0) {
-            dateToFetch.setDate(dateToFetch.getDate() - 1);
-            page = 1;
-
-            const weekBack = new Date();
-            weekBack.setDate(weekBack.getDate() - 7);
-
-            if (weekBack > dateToFetch) break;
-          } else {
-            allPhotos = [...allPhotos, ...photos];
-            page++;
-          }
-
-          if (allPhotos.length >= 25) break;
-        }
-
-        dispatch({ type: "FETCH_SUCCESS", payload: allPhotos });
-        setCurrentDate(dateToFetch);
-      } catch (error) {
-        dispatch({
-          type: "FETCH_FAILURE",
-          payload: "Failed to fetch mars images",
+      if (fetchedImages.length === 0) {
+        setCurrentDate((prevDate) => {
+          const newDate = new Date(prevDate);
+          newDate.setDate(newDate.getDate() - 1);
+          return newDate;
         });
+        setCurrentPage(1);
+        return;
       }
-    };
 
-    fetchMarsImages();
-  }, [currentPage, currentDate]);
+      dispatch({ type: "FETCH_SUCCESS", payload: fetchedImages });
+    } catch (error) {
+      dispatch({
+        type: "FETCH_FAILURE",
+        payload: "Failed to fetch mars images",
+      });
+      console.error("error fetching mars images: ", error);
+    }
+  };
 
-  const loadNextPage = () => {
+  useEffect(() => {
+    fetchData(currentDate, currentPage);
+  }, [currentDate, currentPage]);
+
+  const fetchNextPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
   };
 
-  return { ...state, loadNextPage };
+  return { ...state, fetchNextPage };
 };

@@ -10,6 +10,7 @@
 @import "./components/PreviousApodImages/PreviousApodImages.css";
 @import "./pages/ApodDetailsPage/apodDetailsPage.css";
 @import "./components/MuiComponents/ApodDetails/apodDetails.css";
+@import "./pages/MarsRoverPage/marsRoverPage.css";
 @import "./variables.css";
 
 * {

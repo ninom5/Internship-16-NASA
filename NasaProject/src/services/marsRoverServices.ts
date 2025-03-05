@@ -19,8 +19,9 @@ export const fetchMarsRoverData = async (earthDate: Date, page: number) => {
       });
       allPhotos = [...allPhotos, ...response.data.photos];
     }
+    console.log(allPhotos);
 
-    return allPhotos;
+    return allPhotos.slice(0, 25);
   } catch (error) {
     console.error("Error fetching mars images: ", error);
     throw new Error("Error fetching mars images");
