@@ -13,20 +13,25 @@ export interface Rover {
   landing_date: string;
   launch_date: string;
   status: string;
-  max_sol: number;
-  max_date: number;
-  total_photos: number;
-  cameras: Camera[];
+}
+
+export interface RoverPhoto {
+  id: number;
+  sol: number;
+  camera: Camera;
+  imgSrc: string;
+  earthDate: string;
+  rover: Rover;
 }
 
 export interface MarsRoverContextType {
-  rovers: Rover[];
+  photos: RoverPhoto[];
   loading: boolean;
   error: string | null;
 }
 
 export const MarsRoverContext = createContext<MarsRoverContextType>({
-  rovers: [],
+  photos: [],
   loading: true,
   error: null,
 });

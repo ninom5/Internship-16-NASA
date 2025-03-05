@@ -1,16 +1,16 @@
-import { Rover } from "../../contexts";
-import { useEffect, useReducer } from "react";
+import { RoverPhoto } from "../../contexts";
+import { useEffect, useReducer, useState } from "react";
 import { MarsRoverAction } from "../../types/marsRoverActionType";
 import { fetchMarsRoverData } from "../../services/marsRoverServices";
 
 interface State {
-  rovers: Rover[];
+  photos: RoverPhoto[];
   loading: boolean;
   error: string | null;
 }
 
 const initialState = {
-  rovers: [],
+  photos: [],
   loading: true,
   error: null,
 };
@@ -20,7 +20,11 @@ const marsRoverReducer = (state: State, action: MarsRoverAction): State => {
     case "FETCH_REQUEST":
       return { ...state, loading: true, error: null };
     case "FETCH_SUCCESS":
-      return { ...state, loading: false, rovers: action.payload };
+      return {
+        ...state,
+        loading: false,
+        photos: [...state.photos, ...action.payload],
+      };
     case "FETCH_FAILURE":
       return { ...state, loading: false, error: action.payload };
 
@@ -31,14 +35,38 @@ const marsRoverReducer = (state: State, action: MarsRoverAction): State => {
 
 export const useFetchMarsRovers = () => {
   const [state, dispatch] = useReducer(marsRoverReducer, initialState);
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchMarsImages = async () => {
       dispatch({ type: "FETCH_REQUEST" });
       try {
-        const rovers = await fetchMarsRoverData();
+        let allPhotos: RoverPhoto[] = [];
+        let page = currentPage;
+        let dateToFetch = new Date(currentDate);
 
-        dispatch({ type: "FETCH_SUCCESS", payload: rovers });
+        while (true) {
+          const photos = await fetchMarsRoverData(dateToFetch, page);
+
+          if (photos.length === 0) {
+            dateToFetch.setDate(dateToFetch.getDate() - 1);
+            page = 1;
+
+            const weekBack = new Date();
+            weekBack.setDate(weekBack.getDate() - 7);
+
+            if (weekBack > dateToFetch) break;
+          } else {
+            allPhotos = [...allPhotos, ...photos];
+            page++;
+          }
+
+          if (allPhotos.length >= 25) break;
+        }
+
+        dispatch({ type: "FETCH_SUCCESS", payload: allPhotos });
+        setCurrentDate(dateToFetch);
       } catch (error) {
         dispatch({
           type: "FETCH_FAILURE",
@@ -48,7 +76,11 @@ export const useFetchMarsRovers = () => {
     };
 
     fetchMarsImages();
-  }, []);
+  }, [currentPage, currentDate]);
 
-  return state;
+  const loadNextPage = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
+  return { ...state, loadNextPage };
 };
