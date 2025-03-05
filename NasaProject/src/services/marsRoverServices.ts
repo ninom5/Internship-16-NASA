@@ -14,7 +14,6 @@ export const fetchMarsRoverData = async (earthDate: Date) => {
         params: {
           api_key: apiKey,
           earth_date: formattedDate,
-          per_page: 25,
         },
       });
 

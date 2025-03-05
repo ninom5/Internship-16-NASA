@@ -10,7 +10,7 @@ export const MarsRoverPage = () => {
 
       {loading && <div>Loading...</div>}
       {error && <div>Error: {error}</div>}
-      {photos.length === 0 && !loading && <div>No photos available.</div>}
+      {photos.length === 0 && !loading && <div>No photos available</div>}
 
       <div
         style={{
