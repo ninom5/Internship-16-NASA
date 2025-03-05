@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useCallback } from "react";
 import { fetchApodImages } from "../../services/apodServices";
 import { ApodAction } from "../../types";
 import { ApodData } from "../../types";
@@ -7,6 +7,8 @@ const initialState = {
   data: [] as ApodData[],
   loading: true,
   error: null as string | null,
+  hasMore: true,
+  startDate: new Date(),
 };
 
 const apodReducer = (state: typeof initialState, action: ApodAction) => {
@@ -17,11 +19,13 @@ const apodReducer = (state: typeof initialState, action: ApodAction) => {
       return {
         ...state,
         loading: false,
-        data: action.payload,
+        data: [...state.data, ...action.payload],
+        hasMore: action.payload.length > 0,
       };
     case "FETCH_FAILURE":
       return { ...state, loading: false, error: action.payload };
-
+    case "UPDATE_START_DATE":
+      return { ...state, startDate: action.payload };
     default:
       return state;
   }
@@ -30,33 +34,45 @@ const apodReducer = (state: typeof initialState, action: ApodAction) => {
 export const useFetchApod = () => {
   const [state, dispatch] = useReducer(apodReducer, initialState);
 
-  useEffect(() => {
-    const fetchImages = async () => {
-      dispatch({ type: "FETCH_REQUEST" });
-      try {
-        const today = new Date();
-        const startDate = new Date();
-        startDate.setDate(today.getDate() - 20);
+  const fetchMore = useCallback(async () => {
+    if (!state.hasMore) return;
 
-        const startDateString = startDate.toISOString().split("T")[0];
-        const endDateString = today.toISOString().split("T")[0];
+    dispatch({ type: "FETCH_REQUEST" });
 
-        const fetchedImages = await fetchApodImages(
-          startDateString,
-          endDateString
-        );
+    try {
+      const newStartDate = new Date(state.startDate);
+      newStartDate.setDate(newStartDate.getDate() - 20);
+      const startDateString = newStartDate.toISOString().split("T")[0];
+      const endDateString = state.startDate.toISOString().split("T")[0];
 
-        dispatch({ type: "FETCH_SUCCESS", payload: fetchedImages });
-      } catch (error) {
+      const fetchedImages = await fetchApodImages(
+        startDateString,
+        endDateString
+      );
+
+      if (fetchedImages.length === 0) {
+        console.log("no more images to show");
         dispatch({
           type: "FETCH_FAILURE",
-          payload: "Failed to fetch APOD images ",
+          payload: "No more images available",
         });
+        return;
       }
-    };
 
-    fetchImages();
-  }, []);
+      dispatch({ type: "FETCH_SUCCESS", payload: fetchedImages });
+      dispatch({ type: "UPDATE_START_DATE", payload: newStartDate });
+    } catch (error) {
+      console.error(" Fetch more failed:", error);
+      dispatch({
+        type: "FETCH_FAILURE",
+        payload: "Failed to fetch APOD images",
+      });
+    }
+  }, [state.startDate, state.hasMore, state.loading]);
 
-  return state;
+  useEffect(() => {
+    if (state.data.length === 0) fetchMore();
+  }, [state.startDate]);
+
+  return { ...state, fetchMore };
 };

@@ -16,7 +16,6 @@ export const ApodImage: React.FC = () => {
 
   useEffect(() => {
     setSelectedImg(data.find((img) => img.date === date));
-    console.log(selectedImg);
   }, [date, data]);
 
   const handleClick = ({ date }: { date: string }) => {

@@ -1,4 +1,4 @@
-import { Rover } from "../contexts/marsrover-context";
+import { Rover } from "../contexts";
 
 export type MarsRoverAction =
   | { type: "FETCH_REQUEST" }

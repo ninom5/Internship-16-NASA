@@ -13,7 +13,6 @@ export const ApodDetailsPage = () => {
   if (!data || data.length === 0) return <p>no data</p>;
 
   const selectedImage = data.find((img) => img.date === routeParameter);
-  console.log(selectedImage?.title);
 
   return (
     <div className="apod-details-page">

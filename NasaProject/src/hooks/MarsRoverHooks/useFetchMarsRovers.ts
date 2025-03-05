@@ -1,4 +1,4 @@
-import { Rover } from "../../contexts/marsrover-context";
+import { Rover } from "../../contexts";
 import { useEffect, useReducer } from "react";
 import { MarsRoverAction } from "../../types/marsRoverActionType";
 import { fetchMarsRoverData } from "../../services/marsRoverServices";
@@ -37,7 +37,6 @@ export const useFetchMarsRovers = () => {
       dispatch({ type: "FETCH_REQUEST" });
       try {
         const rovers = await fetchMarsRoverData();
-        console.log(rovers);
 
         dispatch({ type: "FETCH_SUCCESS", payload: rovers });
       } catch (error) {

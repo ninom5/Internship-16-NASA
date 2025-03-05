@@ -14,8 +14,6 @@ export const fetchApodImages = async (startDate: string, endDate: string) => {
       },
     });
 
-    console.log(response.data);
-
     return response.data.map((item: any) => ({
       mediaUrl: item.url,
       description: item.explanation,

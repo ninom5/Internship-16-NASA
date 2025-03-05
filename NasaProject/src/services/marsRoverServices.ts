@@ -11,7 +11,6 @@ export const fetchMarsRoverData = async () => {
       },
     });
 
-    console.log(response);
     return response.data.rovers;
   } catch (error) {
     throw new Error("Error fetching mars images");

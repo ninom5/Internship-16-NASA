@@ -6,4 +6,5 @@ export type ApodAction =
       type: "FETCH_SUCCESS";
       payload: ApodData[];
     }
-  | { type: "FETCH_FAILURE"; payload: string };
+  | { type: "FETCH_FAILURE"; payload: string }
+  | { type: "UPDATE_START_DATE"; payload: Date };
