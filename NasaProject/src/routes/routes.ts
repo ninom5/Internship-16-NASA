@@ -7,5 +7,6 @@ export const routes: Routes = {
   MARS: "/marsRoverPhotos",
   ASTRONOMY_DETAILS: "/astronomy/:routeParameter",
   MARS_DETAILS: "/marsRoverPhotos/:imgId",
+  EARTH_IMAGERY: "/earthImagery",
   NOT_FOUND: "*",
 };

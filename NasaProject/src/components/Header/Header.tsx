@@ -79,8 +79,8 @@ export const Header: React.FC = () => {
           NEO Tracker
         </Link>
         <Link
-          to="/earth"
-          className={location.pathname === "/earth" ? "active" : ""}
+          to="/earthImagery"
+          className={location.pathname === "/earthImagery" ? "active" : ""}
           onMouseEnter={handleHover}
         >
           Earth Imagery

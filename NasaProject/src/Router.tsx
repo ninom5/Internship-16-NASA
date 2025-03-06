@@ -9,6 +9,7 @@ import {
   NotFoundPage,
   MarsDetailsPage,
   NeoPage,
+  EarthImageryPage,
 } from "./pages";
 
 export const Router = () => {
@@ -25,6 +26,7 @@ export const Router = () => {
           />
           <Route path={routes.MARS_DETAILS} element={<MarsDetailsPage />} />
           <Route path={routes.NEO} element={<NeoPage />} />
+          <Route path={routes.EARTH_IMAGERY} element={<EarthImageryPage />} />
           <Route path={routes.NOT_FOUND} element={<NotFoundPage />} />
         </Route>
       </Routes>

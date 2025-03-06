@@ -4,3 +4,5 @@ export * from "./MarsRoverHooks/useFetchMarsRovers";
 export * from "./MarsRoverHooks/useMarsRovers";
 export * from "./NeoHooks/useFetchNeo";
 export * from "./NeoHooks/useNeo";
+export * from "./EarthImageryHooks/useFetchEarthImagery";
+export * from "./EarthImageryHooks/useEarthImagery";

@@ -6,3 +6,4 @@ export * from "./NotFoundPage/NotFoundPage";
 export * from "./ApodDetailsPage/ApodDetailsPage";
 export * from "./MarsDetailsPage/MarsDeatilsPage";
 export * from "./NeoPage/NeoPage";
+export * from "./EarthImageryPage/EarthImageryPage";
