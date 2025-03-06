@@ -2,6 +2,7 @@ import { EarthImageryData } from "../../types/earthImageryContextType";
 import { EarthImageryAction } from "../../types/earthImageryActionType";
 import { useEffect, useReducer } from "react";
 import { fetchEarthImageryData } from "../../services/earthImageryService";
+import { LatLngTuple } from "leaflet";
 
 interface State {
   data: EarthImageryData[];
@@ -32,7 +33,7 @@ const earthImageryReducer = (
   }
 };
 
-export const useFetchEarthImagery = () => {
+export const useFetchEarthImagery = (position: LatLngTuple) => {
   const [state, dispatch] = useReducer(earthImageryReducer, initialState);
 
   useEffect(() => {
@@ -43,7 +44,10 @@ export const useFetchEarthImagery = () => {
         const today = new Date();
         const formattedDate = today.toISOString().split("T")[0];
 
-        const earthImageryData = await fetchEarthImageryData(formattedDate);
+        const earthImageryData = await fetchEarthImageryData(
+          formattedDate,
+          position
+        );
 
         dispatch({ type: "FETCH_SUCCESS", payload: earthImageryData });
       } catch (error) {

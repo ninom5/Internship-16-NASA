@@ -6,7 +6,7 @@ import "leaflet-control-geocoder";
 import "leaflet/dist/leaflet.css";
 
 export const Map = () => {
-  const { position, setPosition } = useMap();
+  const { position } = useMap();
 
   return (
     <MapContainer
