@@ -5,10 +5,6 @@ import { MarsRoverProvider } from "./contexts";
 import { withErrorBoundary } from "./hoc/withErrorBoundary.tsx";
 
 const App: React.FC = () => {
-  const handleError = (error: Error, info: React.ErrorInfo) => {
-    console.error("Error: ", error, info);
-  };
-
   return (
     <ThemeProvider>
       <ApodProvider>
