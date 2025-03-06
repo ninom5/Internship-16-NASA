@@ -1,9 +1,8 @@
 import { Router } from "./Router.tsx";
-import { ErrorBoundary } from "react-error-boundary";
-import { ErrorFallback } from "./components";
 import { ThemeProvider } from "./contexts";
 import { ApodProvider } from "./contexts";
 import { MarsRoverProvider } from "./contexts";
+import { withErrorBoundary } from "./hoc/withErrorBoundary.tsx";
 
 const App: React.FC = () => {
   const handleError = (error: Error, info: React.ErrorInfo) => {
@@ -11,16 +10,14 @@ const App: React.FC = () => {
   };
 
   return (
-    <ErrorBoundary FallbackComponent={ErrorFallback} onError={handleError}>
-      <ThemeProvider>
-        <ApodProvider>
-          <MarsRoverProvider>
-            <Router />
-          </MarsRoverProvider>
-        </ApodProvider>
-      </ThemeProvider>
-    </ErrorBoundary>
+    <ThemeProvider>
+      <ApodProvider>
+        <MarsRoverProvider>
+          <Router />
+        </MarsRoverProvider>
+      </ApodProvider>
+    </ThemeProvider>
   );
 };
 
-export default App;
+export default withErrorBoundary(App);
