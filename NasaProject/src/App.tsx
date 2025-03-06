@@ -4,6 +4,7 @@ import {
   ApodProvider,
   MarsRoverProvider,
   NeoProvider,
+  MapLocationProvider,
 } from "./contexts";
 import { withErrorBoundary } from "./hoc/withErrorBoundary.tsx";
 
@@ -13,7 +14,9 @@ const App: React.FC = () => {
       <ApodProvider>
         <MarsRoverProvider>
           <NeoProvider>
-            <Router />
+            <MapLocationProvider>
+              <Router />
+            </MapLocationProvider>
           </NeoProvider>
         </MarsRoverProvider>
       </ApodProvider>

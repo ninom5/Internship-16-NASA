@@ -1,22 +1,10 @@
-import { useEffect, useState } from "react";
-import { LatLngExpression } from "leaflet";
+import { MapLocationContext } from "../../contexts/mapLocation-context/MapLocationContext";
+import { useContext } from "react";
 
 export const useMap = () => {
-  const [position, setPosition] = useState<LatLngExpression>([
-    43.508133, 16.440193,
-  ]);
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      ({ coords }) => {
-        const lat = coords.latitude;
-        const lng = coords.longitude;
-        setPosition([lat, lng]);
-      },
-      (blocked) => {
-        if (blocked) return { position };
-      }
-    );
-  }, []);
+  const context = useContext(MapLocationContext);
 
-  return { position, setPosition };
+  if (!context) throw new Error("Error with useMap");
+
+  return context;
 };

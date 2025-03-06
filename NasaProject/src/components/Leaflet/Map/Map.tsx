@@ -1,9 +1,4 @@
-import {
-  MapContainer,
-  Marker,
-  TileLayer,
-  useMap as useLeafletMap,
-} from "react-leaflet";
+import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import { useMap } from "../../../hooks/MapHook/useMap";
 import { SearchComponent } from "./SearchComponent";
 import "leaflet-control-geocoder/dist/Control.Geocoder.css";
@@ -25,7 +20,7 @@ export const Map = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      <SearchComponent setPosition={setPosition} />
+      <SearchComponent />
 
       <Marker position={position} />
     </MapContainer>
