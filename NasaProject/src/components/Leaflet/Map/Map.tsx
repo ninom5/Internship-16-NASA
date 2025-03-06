@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import {
   MapContainer,
   Marker,
@@ -6,7 +5,7 @@ import {
   useMap as useLeafletMap,
 } from "react-leaflet";
 import { useMap } from "../../../hooks/MapHook/useMap";
-import { Geocoder } from "leaflet-control-geocoder";
+import { SearchComponent } from "./SearchComponent";
 import "leaflet-control-geocoder/dist/Control.Geocoder.css";
 import "leaflet-control-geocoder";
 import "leaflet/dist/leaflet.css";
@@ -31,28 +30,4 @@ export const Map = () => {
       <Marker position={position} />
     </MapContainer>
   );
-};
-
-const SearchComponent = ({
-  setPosition,
-}: {
-  setPosition: (pos: [number, number]) => void;
-}) => {
-  const map = useLeafletMap();
-
-  useEffect(() => {
-    if (map) {
-      const geocoder = new Geocoder({
-        defaultMarkGeocode: false,
-      }).on("markgeocode", function (e) {
-        const latlng = e.geocode.center;
-        setPosition([latlng.lat, latlng.lng]);
-        map.setView(latlng, 15);
-      });
-
-      geocoder.addTo(map);
-    }
-  }, [map, setPosition]);
-
-  return null;
 };
