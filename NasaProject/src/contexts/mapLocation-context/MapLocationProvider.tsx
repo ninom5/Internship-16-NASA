@@ -1,4 +1,4 @@
-import React, { useState, PropsWithChildren, use } from "react";
+import React, { useState, PropsWithChildren } from "react";
 import { MapLocationContext } from "./MapLocationContext";
 import { LatLngExpression, LatLngTuple } from "leaflet";
 import { useFetchEarthImagery } from "../../hooks";
