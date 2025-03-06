@@ -13,6 +13,12 @@
 @import "./pages/MarsRoverPage/marsRoverPage.css";
 @import "./pages/MarsDetailsPage/marsDetailsPage.css";
 @import "./components/MuiComponents/MarsDetailsCard/marsDetailsCard.css";
+@import "./components/NeoList/neoList.css";
+@import "./components/NeoCard/neoCard.css";
+@import "./components/Faq/faq.css";
+@import "./pages/NeoPage/neoPage.css";
+@import "./components/RechartsComponents/BarChart/neoChart.css";
+@import "./components/RechartsComponents/ScatterChart/neoScatterChart.css";
 @import "./variables.css";
 
 * {

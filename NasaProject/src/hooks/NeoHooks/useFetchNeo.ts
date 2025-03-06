@@ -4,13 +4,13 @@ import { useEffect, useReducer } from "react";
 import { fetchNeoData } from "../../services/neoService";
 
 interface State {
-  data: NeoData[];
+  data: NeoData;
   loading: boolean;
   error: string | null;
 }
 
 const initialState: State = {
-  data: [] as NeoData[],
+  data: {} as NeoData,
   loading: true,
   error: null,
 };

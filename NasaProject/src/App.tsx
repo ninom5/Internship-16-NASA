@@ -1,7 +1,10 @@
 import { Router } from "./Router.tsx";
-import { ThemeProvider } from "./contexts";
-import { ApodProvider } from "./contexts";
-import { MarsRoverProvider } from "./contexts";
+import {
+  ThemeProvider,
+  ApodProvider,
+  MarsRoverProvider,
+  NeoProvider,
+} from "./contexts";
 import { withErrorBoundary } from "./hoc/withErrorBoundary.tsx";
 
 const App: React.FC = () => {
@@ -9,7 +12,9 @@ const App: React.FC = () => {
     <ThemeProvider>
       <ApodProvider>
         <MarsRoverProvider>
-          <Router />
+          <NeoProvider>
+            <Router />
+          </NeoProvider>
         </MarsRoverProvider>
       </ApodProvider>
     </ThemeProvider>
