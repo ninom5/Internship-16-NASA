@@ -10,6 +10,23 @@
   color: var(--text-white);
 }
 
+.rovers-selects {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  background-color: white;
+  color: var(--space-blue);
+  padding: 20px;
+  border-radius: 8px;
+}
+.rovers-selects select {
+  border: 1px solid var(--space-blue);
+  border-radius: 7px;
+  padding: 10px;
+  cursor: pointer;
+}
+
 .rovers-info h1 {
   font-size: 60px;
   line-height: 70px;

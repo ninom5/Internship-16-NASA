@@ -32,7 +32,11 @@ const marsRoverReducer = (state: State, action: MarsRoverAction): State => {
   }
 };
 
-export const useFetchMarsRovers = () => {
+export const useFetchMarsRovers = (
+  selectedRover: string,
+  selectedCamera: string,
+  fetchData: boolean
+) => {
   const [state, dispatch] = useReducer(marsRoverReducer, initialState);
   const [currentDate, setCurrentDate] = useState(new Date());
   const [currentPage, setCurrentPage] = useState(1);
@@ -40,7 +44,7 @@ export const useFetchMarsRovers = () => {
   const IMAGES_PER_PAGE = 25;
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchDataAsync = async () => {
       if (state.allPhotos.length >= currentPage * IMAGES_PER_PAGE) return;
 
       dispatch({ type: "FETCH_REQUEST" });
@@ -49,18 +53,38 @@ export const useFetchMarsRovers = () => {
       let tempDate = new Date(currentDate);
 
       while (fetchedImages.length < IMAGES_PER_PAGE) {
-        const newImages = await fetchMarsRoverData(tempDate);
-        fetchedImages = [...fetchedImages, ...newImages];
+        try {
+          const newImages = await fetchMarsRoverData(
+            tempDate,
+            selectedRover,
+            selectedCamera
+          );
+          // if (newImages.length === 0) break;
 
-        tempDate.setDate(tempDate.getDate() - 1);
+          fetchedImages = [...fetchedImages, ...newImages];
+
+          tempDate.setDate(tempDate.getDate() - 1);
+        } catch (error) {
+          if (error instanceof Error)
+            dispatch({ type: "FETCH_FAILURE", payload: error.message });
+          else
+            dispatch({
+              type: "FETCH_FAILURE",
+              payload: "An unknown error occurred",
+            });
+
+          return;
+        }
       }
 
       dispatch({ type: "FETCH_SUCCESS", payload: fetchedImages });
       setCurrentDate(tempDate);
     };
 
-    fetchData();
-  }, [currentPage, state.allPhotos]);
+    if (fetchData) {
+      fetchDataAsync();
+    }
+  }, [fetchData, currentPage, state.allPhotos]);
 
   const nextPage = () => {
     if (currentPage * IMAGES_PER_PAGE < state.allPhotos.length) {

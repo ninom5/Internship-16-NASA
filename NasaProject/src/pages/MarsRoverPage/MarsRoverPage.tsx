@@ -2,13 +2,50 @@ import { useFetchMarsRovers } from "@hooks/index";
 import { slideInFromLeftAnimation } from "@constants/Animations";
 import { MarsGalleryImage, PaginationButtons } from "@components/index";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { MouseEvent, useEffect } from "react";
 
 export const MarsRoverPage = () => {
+  const [selectedRover, setSelectedRover] = useState("All");
+  const [selectedCamera, setSelectedCamera] = useState("All");
+
+  const [tempRover, setTempRover] = useState("All");
+  const [tempCamera, setTempCamera] = useState("All");
+
+  const [fetchData, setFetchData] = useState(false);
+
   const { photos, loading, error, nextPage, prevPage, currentPage } =
-    useFetchMarsRovers();
+    useFetchMarsRovers(selectedRover, selectedCamera, fetchData);
+
+  const handleFilter = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setSelectedRover(tempRover);
+    setSelectedCamera(tempCamera);
+    setFetchData(true);
+  };
+
+  useEffect(() => {
+    if (fetchData) {
+      setFetchData(false);
+    }
+  }, [fetchData]);
 
   if (loading) return <div>loading...</div>;
   if (error) return <div>error: {error}</div>;
+
+  const rovers = ["All", "Curiosity", "Opportunity", "Spirit"];
+  const cameras = [
+    "All",
+    "FHAZ",
+    "RHAZ",
+    "MAST",
+    "CHEMCAM",
+    "MAHLI",
+    "MARDI",
+    "NAVCAM",
+    "PANCAM",
+    "MINITES",
+  ];
 
   return (
     <motion.div
@@ -29,7 +66,42 @@ export const MarsRoverPage = () => {
 
         <section className="rovers-gallery">
           <h2 className="rovers-heading">Mars Rover Photos</h2>
+          <div className="rovers-selects items-center gap-4 p-4">
+            <label htmlFor="rover-select">Select a Rover:</label>
+            <select
+              name="rover-select"
+              id="rover-select"
+              value={tempRover}
+              onChange={(e) => setTempRover(e.target.value)}
+            >
+              {rovers.map((rover) => (
+                <option key={rover} value={rover}>
+                  {rover}
+                </option>
+              ))}
+            </select>
 
+            <label htmlFor="camera-select">Select a Camera:</label>
+            <select
+              name="camera-select"
+              id="camera-select"
+              value={tempCamera}
+              onChange={(e) => setTempCamera(e.target.value)}
+            >
+              {cameras.map((camera) => (
+                <option key={camera} value={camera}>
+                  {camera}
+                </option>
+              ))}
+            </select>
+
+            <button
+              onClick={handleFilter}
+              className="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer"
+            >
+              Filter
+            </button>
+          </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-15 p-4 gallery">
             {photos.map((img) => (
               <MarsGalleryImage key={img.id} img={img} />
