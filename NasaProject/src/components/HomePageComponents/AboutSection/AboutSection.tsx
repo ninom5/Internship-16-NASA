@@ -23,15 +23,15 @@ export const AboutSection = () => {
     <section className="about-section">
       <div className="about-section__heading">
         <h3>
-          Have you ever dreamt about exploring the Universe? You've came to
-          right place
+          Have you ever dreamed about exploring the Universe? You've come to the
+          right place.
         </h3>
-        <h2>NASA Explorer - Discover the mighty Universe!</h2>
+        <h2>NASA Explorer - Discover the Mighty Universe!</h2>
         <p>
           Welcome to NASA Explorer, an interactive space-based web application.
           That lets you explore and see wonders of the cosmos using real NASA
-          images and data. Discover fascinating facts, see incredible images and
-          track objects near the earth. Join us as we push the boundaries of
+          images and data. Discover fascinating facts, see incredible images,
+          and track objects near Earth. Join us as we push the boundaries of
           space exploration and unravel the mysteries of the universe, one click
           at a time.
         </p>
