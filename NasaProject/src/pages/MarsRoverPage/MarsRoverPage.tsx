@@ -1,7 +1,7 @@
 import { useFetchMarsRovers } from "../../hooks";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { marsRoverAnimation } from "../../constants/Animations";
+import { slideInFromLeftAnimation } from "../../constants/Animations";
 
 export const MarsRoverPage = () => {
   const { photos, loading, error, nextPage, prevPage, currentPage } =
@@ -16,7 +16,7 @@ export const MarsRoverPage = () => {
 
   return (
     <motion.div
-      variants={marsRoverAnimation}
+      variants={slideInFromLeftAnimation}
       initial="initial"
       animate="animate"
       exit="exit"

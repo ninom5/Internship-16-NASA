@@ -2,7 +2,7 @@ import { Map } from "../../components/Leaflet/Map/Map";
 import { useMap } from "../../hooks/MapHook/useMap";
 import { MapLocationProvider } from "../../contexts/mapLocation-context/MapLocationProvider";
 import { motion } from "framer-motion";
-import { earthImageryAnimation } from "../../constants/Animations";
+import { fadeInBlurAnimation } from "../../constants/Animations";
 
 export const EarthImageryPage = () => {
   const { loading, error, imgUrl } = useMap();
@@ -15,7 +15,7 @@ export const EarthImageryPage = () => {
 
   return (
     <motion.div
-      variants={earthImageryAnimation}
+      variants={fadeInBlurAnimation}
       initial="initial"
       animate="animate"
       exit="exit"

@@ -6,7 +6,7 @@ import { NeoChart } from "../../components";
 import { NeoScatterChart } from "../../components";
 import { motion } from "framer-motion";
 import { LoadingAstronaut } from "../../components/LoadingAstronaut/LoadingAstronaut";
-import { neoAnimation } from "../../constants/Animations";
+import { fadeInRotateAnimation } from "../../constants/Animations";
 
 export const NeoPage = () => {
   const { data, error, loading } = useFetchNeo();
@@ -21,7 +21,7 @@ export const NeoPage = () => {
 
   return (
     <motion.div
-      variants={neoAnimation}
+      variants={fadeInRotateAnimation}
       initial="initial"
       animate="animate"
       exit="exit"

@@ -1,10 +1,10 @@
-export const astronomyAnimation = {
+export const fadeInUpAnimation = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
   exit: { opacity: 0, y: 20 },
 };
 
-export const earthImageryAnimation = {
+export const fadeInBlurAnimation = {
   initial: { opacity: 0, filter: "blur(10px)" },
   animate: {
     opacity: 1,
@@ -18,7 +18,7 @@ export const earthImageryAnimation = {
   },
 };
 
-export const marsRoverAnimation = {
+export const slideInFromLeftAnimation = {
   initial: { opacity: 0, x: -100 },
   animate: {
     opacity: 1,
@@ -28,7 +28,7 @@ export const marsRoverAnimation = {
   exit: { opacity: 0, x: 100, transition: { duration: 0.7, ease: "easeIn" } },
 };
 
-export const neoAnimation = {
+export const fadeInRotateAnimation = {
   initial: { opacity: 0, rotate: -10 },
   animate: {
     opacity: 1,

@@ -4,13 +4,13 @@ import { ToastContainer } from "react-toastify";
 import { motion } from "framer-motion";
 import { useApod } from "../../hooks";
 import { LoadingAstronaut } from "../../components/LoadingAstronaut/LoadingAstronaut";
-import { astronomyAnimation } from "../../constants/Animations";
+import { fadeInUpAnimation } from "../../constants/Animations";
 
 export const AstronomyPage = () => {
   const { data, loading, error, fetchMore, hasMore } = useApod();
   return (
     <motion.div
-      variants={astronomyAnimation}
+      variants={fadeInUpAnimation}
       initial="initial"
       animate="animate"
       exit="exit"
