@@ -2,20 +2,7 @@ import { Map } from "../../components/Leaflet/Map/Map";
 import { useMap } from "../../hooks/MapHook/useMap";
 import { MapLocationProvider } from "../../contexts/mapLocation-context/MapLocationProvider";
 import { motion } from "framer-motion";
-
-const earthImageryAnimation = {
-  initial: { opacity: 0, filter: "blur(10px)" },
-  animate: {
-    opacity: 1,
-    filter: "blur(0px)",
-    transition: { duration: 1.2, ease: "easeOut" },
-  },
-  exit: {
-    opacity: 0,
-    filter: "blur(10px)",
-    transition: { duration: 0.6, ease: "easeIn" },
-  },
-};
+import { earthImageryAnimation } from "../../constants/Animations";
 
 export const EarthImageryPage = () => {
   const { loading, error, imgUrl } = useMap();

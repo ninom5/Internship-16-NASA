@@ -1,6 +1,7 @@
 import { useFetchMarsRovers } from "../../hooks";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { marsRoverAnimation } from "../../constants/Animations";
 
 export const MarsRoverPage = () => {
   const { photos, loading, error, nextPage, prevPage, currentPage } =
@@ -10,22 +11,12 @@ export const MarsRoverPage = () => {
     navigate(`/marsRoverPhotos/${id}`);
   };
 
-  const marsRoverPageAnimations = {
-    initial: { opacity: 0, x: -100 },
-    animate: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 1.5, ease: "easeOut" },
-    },
-    exit: { opacity: 0, x: 100, transition: { duration: 0.7, ease: "easeIn" } },
-  };
-
   if (loading) return <div>loading...</div>;
   if (error) return <div>error: {error}</div>;
 
   return (
     <motion.div
-      variants={marsRoverPageAnimations}
+      variants={marsRoverAnimation}
       initial="initial"
       animate="animate"
       exit="exit"
