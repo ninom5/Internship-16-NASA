@@ -1,13 +1,17 @@
 import { useFetchMarsRovers } from "@hooks/index";
 import { slideInFromLeftAnimation } from "@constants/Animations";
-import { MarsGalleryImage, PaginationButtons } from "@components/index";
+import {
+  MarsGallery,
+  PaginationButtons,
+  GallerySkeleton,
+  LoadingAstronaut,
+} from "@components/index";
 import { motion } from "framer-motion";
 
 export const MarsRoverPage = () => {
   const { photos, loading, error, nextPage, prevPage, currentPage } =
     useFetchMarsRovers();
 
-  if (loading) return <div>loading...</div>;
   if (error) return <div>error: {error}</div>;
 
   return (
@@ -30,11 +34,11 @@ export const MarsRoverPage = () => {
         <section className="rovers-gallery">
           <h2 className="rovers-heading">Mars Rover Photos</h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-15 p-4 gallery">
-            {photos.map((img) => (
-              <MarsGalleryImage key={img.id} img={img} />
-            ))}
-          </div>
+          <MarsGallery
+            photos={photos}
+            isLoading={loading}
+            LoadingComponent={GallerySkeleton}
+          />
 
           <PaginationButtons
             currentPage={currentPage}
