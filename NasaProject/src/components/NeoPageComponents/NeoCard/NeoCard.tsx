@@ -1,5 +1,5 @@
 import { Globe, AlertTriangle } from "lucide-react";
-import { NearEarthObject } from "../../types/neoContextType";
+import { NearEarthObject } from "../../../types/neoContextType";
 
 export const NeoCard = ({ neo }: { neo: NearEarthObject }) => {
   return (

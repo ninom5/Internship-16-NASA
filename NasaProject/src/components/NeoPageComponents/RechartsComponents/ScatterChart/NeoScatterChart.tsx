@@ -7,7 +7,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { useNeo } from "../../../hooks";
+import { useNeo } from "../../../../hooks";
 
 export const NeoScatterChart = () => {
   const { data: neoData } = useNeo();

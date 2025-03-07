@@ -8,7 +8,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { useNeo } from "../../../hooks";
+import { useNeo } from "../../../../hooks";
 
 export const NeoChart = () => {
   const { data: neoData } = useNeo();

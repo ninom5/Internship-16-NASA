@@ -12,16 +12,16 @@
 @import "./components/ApodPageComponents/ApodDetails/apodDetails.css";
 @import "./pages/MarsRoverPage/marsRoverPage.css";
 @import "./pages/MarsDetailsPage/marsDetailsPage.css";
-@import "./components/MuiComponents/MarsDetailsCard/marsDetailsCard.css";
-@import "./components/NeoList/neoList.css";
-@import "./components/NeoCard/neoCard.css";
+@import "./components/MarsRoverPageComponents/MarsDetailsCard/marsDetailsCard.css";
+@import "./components/NeoPageComponents/NeoList/neoList.css";
+@import "./components/NeoPageComponents/NeoCard/neoCard.css";
 @import "./components/HomePageComponents/Faq/faq.css";
 @import "./pages/NeoPage/neoPage.css";
-@import "./components/RechartsComponents/BarChart/neoChart.css";
-@import "./components/RechartsComponents/ScatterChart/neoScatterChart.css";
+@import "./components/NeoPageComponents/RechartsComponents/BarChart/neoChart.css";
+@import "./components/NeoPageComponents/RechartsComponents/ScatterChart/neoScatterChart.css";
 @import "./pages/EarthImageryPage/earthImageryPage.css";
 @import "./components/HomePageComponents/HomePageLoader/homePageLoader.css";
-@import "./components/PaginationButtons/paginationButtons.css";
+@import "./components/MarsRoverPageComponents/PaginationButtons/paginationButtons.css";
 @import "./variables.css";
 
 * {

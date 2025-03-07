@@ -1,5 +1,5 @@
 import { useFetchNeo } from "../../hooks";
-import NeoList from "../../components/NeoList/NeoList";
+import NeoList from "../../components/NeoPageComponents/NeoList/NeoList";
 import { NearEarthObject } from "../../types/neoContextType";
 import { Faq } from "../../components";
 import { NeoChart } from "../../components";
