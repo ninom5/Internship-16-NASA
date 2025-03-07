@@ -1,4 +1,4 @@
-.about-page {
+.about-section {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -9,7 +9,7 @@
   background-color: var(--home-section-cards-background-color);
 }
 
-.about-page__heading {
+.about-section__heading {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,16 +19,16 @@
   color: var(--home-section-about-heading-text-color);
   text-align: center;
 }
-.about-page__heading h3 {
+.about-section__heading h3 {
   font-size: 20px;
 }
-.about-page__heading h2 {
+.about-section__heading h2 {
   font-size: 50px;
   line-height: 60px;
   letter-spacing: -0.5px;
   margin: 10px 0 40px;
 }
-.about-page__heading p {
+.about-section__heading p {
   font-size: 20px;
   width: 90%;
   line-break: auto;
@@ -48,6 +48,6 @@
   color: var(--home-section-card-heading-color);
 }
 
-.about-page-footer {
+.about-section-footer {
   color: var(--home-footer-text);
 }

@@ -1,0 +1,45 @@
+.pages-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 50px 0;
+}
+
+.change-page-button {
+  border: none;
+  border-radius: 2px 20px;
+  background-color: var(--space-blue);
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  position: relative;
+  font-size: 16px;
+  transition: 0.7s;
+}
+.change-page-button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: inherit;
+  background: linear-gradient(to right, red, blue);
+  z-index: -1;
+  opacity: 0;
+  transition: 0.7s;
+}
+.change-page-button:hover {
+  border-radius: 20px 2px;
+}
+
+.change-page-button:hover::before {
+  opacity: 1;
+}
+
+#prev-button {
+  border-radius: 20px 2px;
+}
+#prev-button:hover {
+  border-radius: 2px 20px;
+}

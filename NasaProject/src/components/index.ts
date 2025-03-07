@@ -16,3 +16,5 @@ export * from "./HomePageLoader/HomePageLoader";
 export * from "./VideoBackground/VideoBackground";
 export * from "./Button/Button";
 export * from "./MuiComponents/AboutFooter/AboutFooter";
+export * from "./MarsGalleryImage/MarsGalleryImage";
+export * from "./PaginationButtons/PaginationButtons";

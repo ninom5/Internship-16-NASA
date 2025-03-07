@@ -14,8 +14,8 @@ import { features } from "../../constants/Features";
 export const AboutSection = () => {
   const links = ["/astronomy", "/marsRoverPhotos", "neo", "earthImag", "/"];
   return (
-    <section className="about-page">
-      <div className="about-page__heading">
+    <section className="about-section">
+      <div className="about-section__heading">
         <h3>
           Have you ever dreamt about exploring the Universe? You've came to
           right place

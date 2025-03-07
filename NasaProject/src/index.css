@@ -21,6 +21,7 @@
 @import "./components/RechartsComponents/ScatterChart/neoScatterChart.css";
 @import "./pages/EarthImageryPage/earthImageryPage.css";
 @import "./components/HomePageLoader/homePageLoader.css";
+@import "./components/PaginationButtons/paginationButtons.css";
 @import "./variables.css";
 
 * {
