@@ -19,6 +19,7 @@
 @import "./pages/NeoPage/neoPage.css";
 @import "./components/RechartsComponents/BarChart/neoChart.css";
 @import "./components/RechartsComponents/ScatterChart/neoScatterChart.css";
+@import "./pages/EarthImageryPage/earthImageryPage.css";
 @import "./variables.css";
 
 * {

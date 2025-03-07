@@ -1,20 +1,25 @@
-import { EarthImageryData } from "../../types/earthImageryContextType";
-import { EarthImageryAction } from "../../types/earthImageryActionType";
 import { useEffect, useReducer } from "react";
 import { fetchEarthImageryData } from "../../services/earthImageryService";
 import { LatLngTuple } from "leaflet";
 
 interface State {
-  data: EarthImageryData[];
+  position: LatLngTuple;
   loading: boolean;
   error: string | null;
+  imageUrl: string | null;
 }
 
 const initialState: State = {
-  data: [] as EarthImageryData[],
-  loading: true,
+  position: [43.508133, 16.440193],
+  loading: false,
   error: null,
+  imageUrl: null,
 };
+
+type EarthImageryAction =
+  | { type: "FETCH_REQUEST" }
+  | { type: "FETCH_SUCCESS"; payload: string }
+  | { type: "FETCH_FAILURE"; payload: string };
 
 const earthImageryReducer = (
   state: State,
@@ -24,10 +29,13 @@ const earthImageryReducer = (
     case "FETCH_REQUEST":
       return { ...state, loading: true, error: null };
     case "FETCH_SUCCESS":
-      return { ...state, loading: false, data: action.payload };
+      return {
+        ...state,
+        loading: false,
+        imageUrl: action.payload,
+      };
     case "FETCH_FAILURE":
       return { ...state, loading: false, error: action.payload };
-
     default:
       return state;
   }
@@ -44,15 +52,11 @@ export const useFetchEarthImagery = (position: LatLngTuple) => {
         const today = new Date();
         const formattedDate = today.toISOString().split("T")[0];
 
-        const earthImageryData = await fetchEarthImageryData(
-          formattedDate,
-          position
-        );
+        const imageUrl = await fetchEarthImageryData(formattedDate, position);
 
-        dispatch({ type: "FETCH_SUCCESS", payload: earthImageryData });
+        dispatch({ type: "FETCH_SUCCESS", payload: imageUrl });
       } catch (error) {
         console.error(error);
-
         dispatch({
           type: "FETCH_FAILURE",
           payload: "Error fetching Earth Imagery data",
@@ -61,11 +65,12 @@ export const useFetchEarthImagery = (position: LatLngTuple) => {
     };
 
     fetchData();
-  }, []);
+  }, [position]);
 
   return {
-    data: state.data,
+    position: state.position,
     loading: state.loading,
     error: state.error,
+    imageUrl: state.imageUrl,
   };
 };

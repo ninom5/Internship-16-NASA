@@ -1,8 +1,7 @@
-import React, { useState, PropsWithChildren } from "react";
+import React, { useState, PropsWithChildren, useEffect } from "react";
 import { MapLocationContext } from "./MapLocationContext";
 import { LatLngExpression, LatLngTuple } from "leaflet";
 import { useFetchEarthImagery } from "../../hooks";
-import { useEffect } from "react";
 
 export const MapLocationProvider: React.FC<PropsWithChildren> = ({
   children,
@@ -11,12 +10,11 @@ export const MapLocationProvider: React.FC<PropsWithChildren> = ({
     43.508133, 16.440193,
   ]);
   const [satelliteRequest, setSatelliteRequest] = useState(false);
+  const [imgUrl, setImageUrl] = useState<string | null>(null);
 
-  const { data, error, loading } = useFetchEarthImagery(
+  const { loading, error, imageUrl } = useFetchEarthImagery(
     position as LatLngTuple
   );
-
-  console.log(data, error, loading);
 
   const requestSatelliteImage = () => {
     if (confirm("Do you want to see the satellite image?")) {
@@ -26,9 +24,14 @@ export const MapLocationProvider: React.FC<PropsWithChildren> = ({
 
   useEffect(() => {
     if (satelliteRequest) {
+      setImageUrl(imageUrl);
       setSatelliteRequest(false);
     }
-  }, [satelliteRequest, position]);
+  }, [satelliteRequest, imageUrl]);
+
+  useEffect(() => {
+    console.log(imgUrl);
+  }, [imageUrl]);
 
   useEffect(() => {
     requestSatelliteImage();
@@ -36,7 +39,15 @@ export const MapLocationProvider: React.FC<PropsWithChildren> = ({
 
   return (
     <MapLocationContext.Provider
-      value={{ position, setPosition, requestSatelliteImage }}
+      value={{
+        position,
+        setPosition,
+        requestSatelliteImage,
+        error,
+        loading,
+        imgUrl,
+        setImageUrl,
+      }}
     >
       {children}
     </MapLocationContext.Provider>

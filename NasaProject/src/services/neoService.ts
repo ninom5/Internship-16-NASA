@@ -13,7 +13,6 @@ export const fetchNeoData = async (startDate: string, endDate: string) => {
       },
     });
 
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching NEO data:", error);
