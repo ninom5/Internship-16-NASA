@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
-import { withLoading } from "../../hoc/withLoading";
-import { ApodData } from "../../types";
+import { withLoading } from "../../../hoc/withLoading";
+import { ApodData } from "../../../types";
 
 interface PreviousApodImagesProps {
   data: ApodData[] | null;

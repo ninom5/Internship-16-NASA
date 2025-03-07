@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { routes } from "./routes/routes";
 import {
   ApodDetailsPage,
-  AstronomyPage,
+  ApodPage,
   HomePage,
   Layout,
   MarsRoverPage,
@@ -18,7 +18,7 @@ export const Router = () => {
       <Routes>
         <Route element={<Layout />}>
           <Route path={routes.HOME} element={<HomePage />} />
-          <Route path={routes.ASTRONOMY} element={<AstronomyPage />} />
+          <Route path={routes.ASTRONOMY} element={<ApodPage />} />
           <Route path={routes.MARS} element={<MarsRoverPage />} />
           <Route
             path={routes.ASTRONOMY_DETAILS}

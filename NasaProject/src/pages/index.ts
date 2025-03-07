@@ -1,6 +1,6 @@
 export * from "./HomePage/HomePage";
 export * from "./Layout";
-export * from "./AstronomyPage/AstronomyPage";
+export * from "./ApodPage/ApodPage";
 export * from "./MarsRoverPage/MarsRoverPage";
 export * from "./NotFoundPage/NotFoundPage";
 export * from "./ApodDetailsPage/ApodDetailsPage";
