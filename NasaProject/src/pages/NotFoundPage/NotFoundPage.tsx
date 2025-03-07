@@ -1,20 +1,11 @@
 import React from "react";
-import videoPath from "../../assets/images/Untitled design.mp4";
+import { VideoBackground, Button } from "../../components";
 import astronaut from "../../assets/images/—Pngtree—cute astronaut looking up star_6225035.png";
 import basketballAstronaut from "../../assets/images/—Pngtree—astronaut_1060639.png";
 import astronautRidingComet from "../../assets/images/—Pngtree—cute astronaut and falling meteorite_6225030.png";
 import vespaAstronaut from "../../assets/images/—Pngtree—cool vintage astronaut in outer_6459098.png";
 import { motion } from "framer-motion";
-
-const notFoundAnimation = {
-  initial: { opacity: 0, scale: 0.8 },
-  animate: {
-    opacity: 1,
-    scale: 1,
-    transition: { type: "spring", stiffness: 100, damping: 10 },
-  },
-  exit: { opacity: 0, scale: 0.9, transition: { duration: 0.5 } },
-};
+import { bounceAnimation } from "../../constants/Animations";
 
 const line =
   "Oops, how did you get here? Go back before you fall into the black hole, after that there is no way back.";
@@ -22,15 +13,13 @@ const line =
 export const NotFoundPage: React.FC = () => {
   return (
     <motion.div
-      variants={notFoundAnimation}
+      variants={bounceAnimation}
       initial="initial"
       animate="animate"
       exit="exit"
     >
       <div className="not-found-page">
-        <video autoPlay loop muted>
-          <source src={videoPath} />
-        </video>
+        <VideoBackground />
 
         <div className="not-found-text">
           <h1>404</h1>
@@ -57,19 +46,19 @@ export const NotFoundPage: React.FC = () => {
           className="astronaut"
         />
 
-        <button
-          className="button-navigation button-home"
+        <Button
           onClick={() => (window.location.href = "/")}
-        >
-          🏠🚀 Mission Control (Home)
-        </button>
+          label="Mission Control (Home)"
+          emoji="🏠🚀"
+          className="button-navigation button-home"
+        />
 
-        <button
-          className="button-navigation button-last-location"
+        <Button
           onClick={() => window.history.back()}
-        >
-          🔙🚀 Fly to the Last Known Location (Go Back)
-        </button>
+          label="Fly to the Last Known Location (Go Back)"
+          emoji="🔙🚀"
+          className="button-navigation button-last-location"
+        />
       </div>
     </motion.div>
   );

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { EarthComponent } from "../../components";
-import { AboutPage } from "../../components";
+import { AboutSection } from "../../components";
 import { SwitchButton } from "../../components";
 import { HomePageLoader } from "../../components";
 
@@ -17,7 +17,7 @@ export const HomePage = () => {
         <SwitchButton />
       </section>
 
-      <AboutPage />
+      <AboutSection />
     </main>
   );
 };

@@ -40,3 +40,13 @@ export const fadeInRotateAnimation = {
     transition: { duration: 0.7, ease: "easeIn" },
   },
 };
+
+export const bounceAnimation = {
+  initial: { opacity: 0, scale: 0.8 },
+  animate: {
+    opacity: 1,
+    scale: 1,
+    transition: { type: "spring", stiffness: 100, damping: 10 },
+  },
+  exit: { opacity: 0, scale: 0.9, transition: { duration: 0.5 } },
+};

@@ -1,4 +1,4 @@
-export * from "./AboutPage/AboutPage";
+export * from "./AboutSection/AboutSection";
 export * from "./ApodImage/ApodImage";
 export * from "./Earth/Earth";
 export * from "./ErrorBoundary/ErrorFallback";
@@ -13,3 +13,6 @@ export * from "./Faq/Faq";
 export * from "./RechartsComponents/BarChart/NeoChart";
 export * from "./RechartsComponents/ScatterChart/NeoScatterChart";
 export * from "./HomePageLoader/HomePageLoader";
+export * from "./VideoBackground/VideoBackground";
+export * from "./Button/Button";
+export * from "./MuiComponents/AboutFooter/AboutFooter";
