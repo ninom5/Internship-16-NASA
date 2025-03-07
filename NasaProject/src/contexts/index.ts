@@ -8,3 +8,5 @@ export * from "./neo-context/NeoContext";
 export * from "./neo-context/NeoProvider";
 export * from "./mapLocation-context/MapLocationProvider";
 export * from "./mapLocation-context/MapLocationContext";
+export * from "./earthImagery-context/EarthImageryContext";
+export * from "./earthImagery-context/EarthImageryProvider";

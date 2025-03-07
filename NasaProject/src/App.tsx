@@ -5,6 +5,7 @@ import {
   MarsRoverProvider,
   NeoProvider,
   MapLocationProvider,
+  EarthImageryProvider,
 } from "@contexts/index.ts";
 import { withErrorBoundary } from "./hoc/withErrorBoundary.tsx";
 
@@ -15,7 +16,9 @@ const App: React.FC = () => {
         <MarsRoverProvider>
           <NeoProvider>
             <MapLocationProvider>
-              <Router />
+              <EarthImageryProvider>
+                <Router />
+              </EarthImageryProvider>
             </MapLocationProvider>
           </NeoProvider>
         </MarsRoverProvider>

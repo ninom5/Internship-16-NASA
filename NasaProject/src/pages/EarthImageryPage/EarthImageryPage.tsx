@@ -1,17 +1,15 @@
 import { Map } from "@components/index";
-import { useMap } from "@hooks/index";
-import { MapLocationProvider } from "@contexts/index";
+import { useEarthImagery } from "@hooks/index";
 import { fadeInBlurAnimation } from "@constants/Animations";
 import { motion } from "framer-motion";
 
 export const EarthImageryPage = () => {
-  const { loading, error, imgUrl } = useMap();
+  const { loading, error, imageUrl } = useEarthImagery();
 
+  console.log("imageUrl", imageUrl);
   if (loading) return <div>loading...</div>;
 
   if (error) return <div>error: {error}</div>;
-
-  // console.log(imgUrl);
 
   return (
     <motion.div
@@ -20,17 +18,15 @@ export const EarthImageryPage = () => {
       animate="animate"
       exit="exit"
     >
-      <MapLocationProvider>
-        <section id="earth-imagery-page">
-          <h1>Earth Imagery</h1>
-          <p>Find the latest satellite images of Earth</p>
-          <Map />
+      <section id="earth-imagery-page">
+        <h1>Earth Imagery</h1>
+        <p>Find the latest satellite images of Earth</p>
+        <Map />
 
-          <div className="image-wrapper">
-            {imgUrl && <img src={imgUrl} alt="satellite image" />}
-          </div>
-        </section>
-      </MapLocationProvider>
+        <div className="image-wrapper">
+          {imageUrl && <img src={imageUrl} alt="satellite image" />}
+        </div>
+      </section>
     </motion.div>
   );
 };

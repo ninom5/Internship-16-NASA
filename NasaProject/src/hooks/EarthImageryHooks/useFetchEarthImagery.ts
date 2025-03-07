@@ -1,25 +1,21 @@
 import { useEffect, useReducer } from "react";
 import { fetchEarthImageryData } from "@services/earthImageryService";
 import { LatLngTuple } from "leaflet";
+import { EarthImageryAction } from "types/earthImageryActionType";
 
 interface State {
+  imageUrl: string;
   position: LatLngTuple;
   loading: boolean;
   error: string | null;
-  imageUrl: string | null;
 }
 
 const initialState: State = {
+  imageUrl: "",
   position: [43.508133, 16.440193],
   loading: false,
   error: null,
-  imageUrl: null,
 };
-
-type EarthImageryAction =
-  | { type: "FETCH_REQUEST" }
-  | { type: "FETCH_SUCCESS"; payload: string }
-  | { type: "FETCH_FAILURE"; payload: string };
 
 const earthImageryReducer = (
   state: State,
@@ -32,7 +28,7 @@ const earthImageryReducer = (
       return {
         ...state,
         loading: false,
-        imageUrl: action.payload,
+        imageUrl: action.payload.imageUrl,
       };
     case "FETCH_FAILURE":
       return { ...state, loading: false, error: action.payload };
@@ -54,7 +50,14 @@ export const useFetchEarthImagery = (position: LatLngTuple) => {
 
         const imageUrl = await fetchEarthImageryData(formattedDate, position);
 
-        dispatch({ type: "FETCH_SUCCESS", payload: imageUrl });
+        dispatch({
+          type: "FETCH_SUCCESS",
+          payload: {
+            imageUrl,
+            loading: false,
+            error: null,
+          },
+        });
       } catch (error) {
         console.error(error);
         dispatch({
@@ -68,7 +71,6 @@ export const useFetchEarthImagery = (position: LatLngTuple) => {
   }, [position]);
 
   return {
-    position: state.position,
     loading: state.loading,
     error: state.error,
     imageUrl: state.imageUrl,

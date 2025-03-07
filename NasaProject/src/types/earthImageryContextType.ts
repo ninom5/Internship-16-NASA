@@ -12,7 +12,7 @@ export interface EarthImageryData {
 }
 
 export interface EarthImageryContextType {
-  data: EarthImageryData[];
+  imageUrl: string;
   loading: boolean;
   error: string | null;
 }
