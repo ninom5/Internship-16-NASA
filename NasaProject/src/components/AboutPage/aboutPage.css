@@ -6,7 +6,7 @@
   padding: 50px;
   padding-top: 150px;
   align-items: center;
-  background-color: white;
+  background-color: var(--home-section-cards-background-color);
 }
 
 .about-page__heading {
@@ -16,7 +16,7 @@
   padding: 20px;
   width: 100%;
   height: auto;
-  color: var(--galaxy-teal);
+  color: var(--home-section-about-heading-text-color);
   text-align: center;
 }
 .about-page__heading h3 {
@@ -38,4 +38,16 @@
   width: 100px;
   height: auto;
   position: absolute;
+}
+
+#section-cards-pages-heading {
+  color: var(--home-section-cards-heading-text-color);
+}
+
+#section-card-pages-title {
+  color: var(--home-section-card-heading-color);
+}
+
+.about-page-footer {
+  color: var(--home-footer-text);
 }

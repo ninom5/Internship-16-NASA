@@ -36,7 +36,11 @@ export const AboutPage = () => {
             alt="astronaut image"
             id="sitting-astronaut"
           />
-          <Typography variant="h3" fontWeight="bold" color="#9c4dcc">
+          <Typography
+            variant="h3"
+            fontWeight="bold"
+            id="section-cards-pages-heading"
+          >
             Start your space adventure today! ⭐ 🔭
           </Typography>
         </Box>
@@ -73,7 +77,11 @@ export const AboutPage = () => {
               <Link to={links[index]}>
                 <Card sx={{ boxShadow: 3, borderRadius: 2 }}>
                   <CardContent>
-                    <Typography variant="h6" gutterBottom color="#4db6ac">
+                    <Typography
+                      variant="h6"
+                      gutterBottom
+                      id="section-card-pages-title"
+                    >
                       {feature.title}
                     </Typography>
                     <Typography variant="body2" color="textSecondary">
@@ -87,12 +95,16 @@ export const AboutPage = () => {
         </Grid2>
 
         <Box marginTop={6} textAlign="center">
-          <Typography variant="h6" color="textSecondary">
+          <Typography variant="h6" className="about-page-footer">
             The web application is built with <strong>React</strong>,{" "}
             <strong>TypeScript</strong>, <strong>Three.js</strong> for
             interactive earth on home page, and <strong>NASA Open APIs</strong>.
           </Typography>
-          <Typography variant="body1" color="textSecondary" marginTop={2}>
+          <Typography
+            variant="body1"
+            className="about-page-footer"
+            marginTop={2}
+          >
             It features a responsive design, animations, and an intuitive user
             interface to make space exploration fun and engaging.
           </Typography>

@@ -34,7 +34,7 @@ export const MapLocationProvider: React.FC<PropsWithChildren> = ({
   }, [imageUrl]);
 
   useEffect(() => {
-    requestSatelliteImage();
+    // requestSatelliteImage();
   }, [position]);
 
   return (

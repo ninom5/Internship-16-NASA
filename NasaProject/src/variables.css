@@ -4,5 +4,31 @@
   --space-blue: #1e2a47;
   --light-gray: #f1f1f1;
   --text-white: #ffffff;
+  --footer-text-color: rgba(0, 0, 0, 0.6);
+
   --font-family-main: "Inter", sans-serif;
+}
+
+.light-theme {
+  --section-animation-background: var(--space-blue);
+
+  --header-text-color: var(--galaxy-teal);
+  --header-text-color-hover: var(--nebula-purple);
+
+  --home-section-about-heading-text-color: var(--galaxy-teal);
+  --home-section-cards-background-color: var(--text-white);
+  --home-section-cards-heading-text-color: var(--nebula-purple);
+  --home-section-card-heading-color: var(--galaxy-teal);
+  --home-section-card-description-text-color: var(--light-gray);
+
+  --home-footer-text: var(--footer-text-color);
+}
+.dark-theme {
+  --section-animation-background: black;
+  --home-section-cards-background-color: var(--space-blue);
+  --home-section-about-heading-text-color: var(--light-gray);
+  --home-section-cards-heading-text-color: var(--galaxy-teal);
+  --home-section-card-heading-color: var(--nebula-purple);
+
+  --home-footer-text: var(--light-gray);
 }

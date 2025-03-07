@@ -7,6 +7,7 @@
   width: 100%;
   height: auto;
   position: relative;
+  background-color: var(--section-animation-background);
 }
 .loading-message {
   position: absolute;
@@ -21,7 +22,5 @@
 
 canvas {
   width: auto;
-  /* min-height: 90vh;
-  max-height: 90vh; */
-  height: 90vh;
+  height: 85vh;
 }
