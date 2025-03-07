@@ -5,6 +5,7 @@ import { SwitchButton } from "../../components";
 
 export const HomePage = () => {
   const [isLoading, setIsLoading] = useState(true);
+
   return (
     <main id="main">
       <section className="hero-section">
