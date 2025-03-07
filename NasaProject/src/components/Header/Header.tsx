@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import nasaLogo from "../../assets/images/58429400a6515b1e0ad75acc.png";
+import nasaLogo from "@assets/images/58429400a6515b1e0ad75acc.png";
 
 export const Header: React.FC = () => {
   const [underlineStyle, setUnderlineStyle] = useState<{

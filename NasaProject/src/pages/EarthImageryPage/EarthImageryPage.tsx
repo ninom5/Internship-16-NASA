@@ -1,8 +1,8 @@
-import { Map } from "../../components/Leaflet/Map/Map";
-import { useMap } from "../../hooks/MapHook/useMap";
-import { MapLocationProvider } from "../../contexts/mapLocation-context/MapLocationProvider";
+import { Map } from "@components/index";
+import { useMap } from "@hooks/index";
+import { MapLocationProvider } from "@contexts/index";
+import { fadeInBlurAnimation } from "@constants/Animations";
 import { motion } from "framer-motion";
-import { fadeInBlurAnimation } from "../../constants/Animations";
 
 export const EarthImageryPage = () => {
   const { loading, error, imgUrl } = useMap();

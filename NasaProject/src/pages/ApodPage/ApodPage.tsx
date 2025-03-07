@@ -1,10 +1,12 @@
-import { ApodImage } from "../../components";
-import PreviousApodImages from "../../components/ApodPageComponents/PreviousApodImages/PreviousApodImages";
-import { ToastContainer } from "react-toastify";
+import {
+  ApodImage,
+  PreviousApodImages,
+  LoadingAstronaut,
+} from "@components/index";
+import { useApod } from "@hooks/index";
+import { fadeInUpAnimation } from "@constants/Animations";
 import { motion } from "framer-motion";
-import { useApod } from "../../hooks";
-import { LoadingAstronaut } from "../../components/LoadingAstronaut/LoadingAstronaut";
-import { fadeInUpAnimation } from "../../constants/Animations";
+import { ToastContainer } from "react-toastify";
 
 export const ApodPage = () => {
   const { data, loading, error, fetchMore, hasMore } = useApod();

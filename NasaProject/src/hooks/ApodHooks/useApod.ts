@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ApodContext } from "../../contexts";
+import { ApodContext } from "@contexts/index";
 
 export const useApod = () => {
   const context = useContext(ApodContext);

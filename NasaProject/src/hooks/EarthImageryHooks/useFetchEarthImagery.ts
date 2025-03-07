@@ -1,5 +1,5 @@
 import { useEffect, useReducer } from "react";
-import { fetchEarthImageryData } from "../../services/earthImageryService";
+import { fetchEarthImageryData } from "@services/earthImageryService";
 import { LatLngTuple } from "leaflet";
 
 interface State {

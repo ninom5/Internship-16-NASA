@@ -1,5 +1,5 @@
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
-import { useMap } from "../../../hooks/MapHook/useMap";
+import { useMap } from "@hooks/index";
 import { SearchComponent } from "./SearchComponent";
 import "leaflet-control-geocoder/dist/Control.Geocoder.css";
 import "leaflet-control-geocoder";

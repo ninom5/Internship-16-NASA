@@ -1,11 +1,11 @@
 import React from "react";
-import { VideoBackground, Button } from "../../components";
-import astronaut from "../../assets/images/—Pngtree—cute astronaut looking up star_6225035.png";
-import basketballAstronaut from "../../assets/images/—Pngtree—astronaut_1060639.png";
-import astronautRidingComet from "../../assets/images/—Pngtree—cute astronaut and falling meteorite_6225030.png";
-import vespaAstronaut from "../../assets/images/—Pngtree—cool vintage astronaut in outer_6459098.png";
+import { VideoBackground, Button } from "@components/index";
+import astronaut from "@assets/images/—Pngtree—cute astronaut looking up star_6225035.png";
+import basketballAstronaut from "@assets/images/—Pngtree—astronaut_1060639.png";
+import astronautRidingComet from "@assets/images/—Pngtree—cute astronaut and falling meteorite_6225030.png";
+import vespaAstronaut from "@assets/images/—Pngtree—cool vintage astronaut in outer_6459098.png";
 import { motion } from "framer-motion";
-import { bounceAnimation } from "../../constants/Animations";
+import { bounceAnimation } from "@constants/Animations";
 
 const line =
   "Oops, how did you get here? Go back before you fall into the black hole, after that there is no way back.";

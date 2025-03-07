@@ -7,9 +7,9 @@ import {
   Box,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import sittingAstronaut from "../../../assets/images/—Pngtree—astronaut cute character_7253137.png";
-import { AboutFooter } from "../..";
-import { features } from "../../../constants/Features";
+import sittingAstronaut from "@assets/images/—Pngtree—astronaut cute character_7253137.png";
+import { AboutFooter } from "@components/index";
+import { features } from "@constants/Features";
 
 export const AboutSection = () => {
   const links = [

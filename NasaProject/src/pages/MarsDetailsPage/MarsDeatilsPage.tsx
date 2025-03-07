@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import { useMarsRovers } from "../../hooks";
-import { MarsDetailsCard } from "../../components";
+import { useMarsRovers } from "@hooks/index";
+import { MarsDetailsCard } from "@components/index";
 
 export const MarsDetailsPage = () => {
   const { imgId } = useParams<Record<string | string, undefined>>();

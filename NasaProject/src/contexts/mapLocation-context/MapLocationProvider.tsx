@@ -1,7 +1,7 @@
 import React, { useState, PropsWithChildren, useEffect } from "react";
 import { MapLocationContext } from "./MapLocationContext";
 import { LatLngExpression, LatLngTuple } from "leaflet";
-import { useFetchEarthImagery } from "../../hooks";
+import { useFetchEarthImagery } from "@hooks/index";
 
 export const MapLocationProvider: React.FC<PropsWithChildren> = ({
   children,

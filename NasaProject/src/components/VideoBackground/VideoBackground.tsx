@@ -1,4 +1,4 @@
-import videoPath from "../../assets/images/Untitled design.mp4";
+import videoPath from "@assets/images/Untitled design.mp4";
 
 export const VideoBackground: React.FC = () => {
   return (

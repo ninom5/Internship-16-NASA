@@ -1,5 +1,5 @@
 import { Typography, Card, CardMedia, CardContent } from "@mui/material";
-import { RoverPhoto } from "../../../contexts";
+import { RoverPhoto } from "@contexts/index";
 
 export const MarsDetailsCard = ({ image }: { image: RoverPhoto }) => {
   return (

@@ -1,7 +1,7 @@
 import { NeoData } from "../../types/neoContextType";
 import { NeoAction } from "../../types/neoActionType";
 import { useEffect, useReducer } from "react";
-import { fetchNeoData } from "../../services/neoService";
+import { fetchNeoData } from "@services/neoService";
 
 interface State {
   data: NeoData;

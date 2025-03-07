@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Geocoder } from "leaflet-control-geocoder";
 import { useMap as useLeafletMap } from "react-leaflet";
-import { useMap } from "../../../hooks/MapHook/useMap";
+import { useMap } from "@hooks/index";
 
 export const SearchComponent = () => {
   const map = useLeafletMap();

@@ -1,5 +1,5 @@
 import { useEffect, useReducer, useCallback } from "react";
-import { fetchApodImages } from "../../services/apodServices";
+import { fetchApodImages } from "@services/apodServices";
 import { ApodAction } from "../../types";
 import { ApodData } from "../../types";
 

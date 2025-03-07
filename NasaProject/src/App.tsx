@@ -5,7 +5,7 @@ import {
   MarsRoverProvider,
   NeoProvider,
   MapLocationProvider,
-} from "./contexts";
+} from "@contexts/index.ts";
 import { withErrorBoundary } from "./hoc/withErrorBoundary.tsx";
 
 const App: React.FC = () => {

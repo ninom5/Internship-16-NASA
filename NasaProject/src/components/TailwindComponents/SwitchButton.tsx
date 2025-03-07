@@ -1,4 +1,4 @@
-import { ThemeContext } from "../../contexts";
+import { ThemeContext } from "@contexts/index";
 import { useContext } from "react";
 import { useEffect } from "react";
 

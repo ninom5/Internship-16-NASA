@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import { useApod } from "../../hooks";
-import { ApodDetails } from "../../components";
+import { useApod } from "@hooks/index";
+import { ApodDetails } from "@components/index";
 
 export const ApodDetailsPage = () => {
   const { data, loading, error } = useApod();

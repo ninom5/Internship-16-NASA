@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import React from "react";
-import { AtmosphereMeshProps } from "../../types";
+import { AtmosphereMeshProps } from "types";
 
 function getFresnelShaderArgs({
   rimHex = 0x0088ff,

@@ -1,4 +1,4 @@
-import { MapLocationContext } from "../../contexts/mapLocation-context/MapLocationContext";
+import { MapLocationContext } from "@contexts/index";
 import { useContext } from "react";
 
 export const useMap = () => {

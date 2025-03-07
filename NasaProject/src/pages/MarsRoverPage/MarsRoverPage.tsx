@@ -1,8 +1,7 @@
-import { useFetchMarsRovers } from "../../hooks";
+import { useFetchMarsRovers } from "@hooks/index";
+import { slideInFromLeftAnimation } from "@constants/Animations";
+import { MarsGalleryImage, PaginationButtons } from "@components/index";
 import { motion } from "framer-motion";
-import { slideInFromLeftAnimation } from "../../constants/Animations";
-import { MarsGalleryImage } from "../../components";
-import { PaginationButtons } from "../../components";
 
 export const MarsRoverPage = () => {
   const { photos, loading, error, nextPage, prevPage, currentPage } =

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { NeoContext } from "../../contexts";
+import { NeoContext } from "@contexts/index";
 
 export const useNeo = () => {
   const context = useContext(NeoContext);

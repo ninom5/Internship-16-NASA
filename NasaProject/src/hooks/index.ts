@@ -6,3 +6,4 @@ export * from "./NeoHooks/useFetchNeo";
 export * from "./NeoHooks/useNeo";
 export * from "./EarthImageryHooks/useFetchEarthImagery";
 export * from "./EarthImageryHooks/useEarthImagery";
+export * from "./MapHook/useMap";

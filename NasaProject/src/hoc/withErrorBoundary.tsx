@@ -1,5 +1,5 @@
 import { ErrorBoundary } from "react-error-boundary";
-import { ErrorFallback } from "../components";
+import { ErrorFallback } from "@components/index";
 
 export const withErrorBoundary = (WrappedComponent: React.ComponentType) => {
   return (props: any) => {

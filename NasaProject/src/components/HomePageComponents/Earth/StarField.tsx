@@ -1,7 +1,7 @@
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import React from "react";
-import { StarPoint, StarProps } from "../../types";
+import { StarPoint, StarProps } from "types";
 
 function getPoints({ numStars = 500 }: StarProps = {}): THREE.Points {
   function randomSpherePoint(): StarPoint {

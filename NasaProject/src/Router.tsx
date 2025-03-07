@@ -10,7 +10,7 @@ import {
   MarsDetailsPage,
   NeoPage,
   EarthImageryPage,
-} from "./pages";
+} from "@pages/index";
 
 export const Router = () => {
   return (

@@ -1,12 +1,14 @@
-import { useFetchNeo } from "../../hooks";
-import NeoList from "../../components/NeoPageComponents/NeoList/NeoList";
+import { useFetchNeo } from "@hooks/index";
 import { NearEarthObject } from "../../types/neoContextType";
-import { Faq } from "../../components";
-import { NeoChart } from "../../components";
-import { NeoScatterChart } from "../../components";
+import {
+  Faq,
+  NeoChart,
+  NeoScatterChart,
+  NeoList,
+  LoadingAstronaut,
+} from "@components/index";
 import { motion } from "framer-motion";
-import { LoadingAstronaut } from "../../components/LoadingAstronaut/LoadingAstronaut";
-import { fadeInRotateAnimation } from "../../constants/Animations";
+import { fadeInRotateAnimation } from "@constants/Animations";
 
 export const NeoPage = () => {
   const { data, error, loading } = useFetchNeo();
