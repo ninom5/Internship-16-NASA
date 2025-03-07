@@ -19,6 +19,7 @@ export const Map = () => {
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
+      <p>&#9825; &#9829;</p>
 
       <SearchComponent />
 

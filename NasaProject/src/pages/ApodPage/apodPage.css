@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: column;
   padding: 50px;
-  margin-top: 100px;
-  background-color: white;
+  padding-top: 100px;
+  background-color: var(--space-blue);
+  color: var(--text-white);
 }
 #gallery {
   margin-top: 100px;

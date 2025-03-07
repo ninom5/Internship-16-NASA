@@ -8,8 +8,8 @@
 .change-page-button {
   border: none;
   border-radius: 2px 20px;
-  background-color: var(--space-blue);
-  color: white;
+  background-color: var(--text-white);
+  color: var(--space-blue);
   padding: 10px 20px;
   cursor: pointer;
   position: relative;

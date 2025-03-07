@@ -23,6 +23,7 @@ export const EarthImageryPage = () => {
         <p>Find the latest satellite images of Earth</p>
         <Map />
 
+        <h2 id="satellite-image-heading">Your satellite image</h2>
         <div className="image-wrapper">
           {imageUrl && <img src={imageUrl} alt="satellite image" />}
         </div>

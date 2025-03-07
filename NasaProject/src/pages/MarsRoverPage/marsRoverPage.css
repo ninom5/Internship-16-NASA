@@ -6,7 +6,8 @@
   justify-content: center;
   padding: 30px;
   justify-self: center;
-  background-color: white;
+  background-color: var(--space-blue);
+  color: var(--text-white);
 }
 
 .rovers-heading {
@@ -14,5 +15,5 @@
   font-size: 70px;
 }
 .gallery {
-  width: 70%;
+  width: 75%;
 }

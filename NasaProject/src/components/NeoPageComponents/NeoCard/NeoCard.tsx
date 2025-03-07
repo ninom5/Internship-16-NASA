@@ -13,34 +13,39 @@ export const NeoCard = ({ neo }: { neo: NearEarthObject }) => {
         <h2 className="text-lg font-semibold text-white">{neo.name}</h2>
       </div>
       <p className="text-gray-400 text-sm mt-1">
-        Magnitude: {neo.absolute_magnitude_h}
+        <span className="type-info"> Magnitude:</span>{" "}
+        {neo.absolute_magnitude_h}
       </p>
 
       <p className="text-gray-400 text-sm">
-        Estimated diameter:{" "}
+        <span className="type-info">Estimated diameter: </span>
         {neo.estimated_diameter.kilometers.estimated_diameter_min} -{" "}
         {neo.estimated_diameter.kilometers.estimated_diameter_max} km
       </p>
 
       <p className="text-gray-400 text-sm">
-        Close approach date:{" "}
+        <span className="type-info"> Close approach date: </span>
         {neo.close_approach_data[0]?.close_approach_date_full}
       </p>
 
       <p className="text-gray-400 text-sm">
-        Velocity:{" "}
-        {neo.close_approach_data[0]?.relative_velocity.kilometers_per_second}{" "}
+        <span className="type-info"> Velocity: </span>
+        {
+          neo.close_approach_data[0]?.relative_velocity.kilometers_per_second
+        }{" "}
         km/s
       </p>
 
       <p className="text-gray-400 text-sm">
-        Distance: {neo.close_approach_data[0]?.miss_distance.astronomical}
+        <span className="type-info"> Distance: </span>{" "}
+        {neo.close_approach_data[0]?.miss_distance.astronomical}
         {"  AU"} equivalent to{" "}
         {neo.close_approach_data[0]?.miss_distance.kilometers} km
       </p>
 
       <p className="text-gray-400 text-sm">
-        Sentry object: {neo.is_sentry_object ? "Yes" : "No"}
+        <span className="type-info"> Sentry object: </span>
+        {neo.is_sentry_object ? "Yes" : "No"}
       </p>
 
       {neo.is_potentially_hazardous_asteroid && (

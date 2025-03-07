@@ -20,7 +20,7 @@ export const MarsRoverPage = () => {
       <section className="rovers-gallery">
         <h1 className="rovers-heading">Mars Rover Photos</h1>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 gallery">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 p-4 gallery">
           {photos.map((img) => (
             <MarsGalleryImage key={img.id} img={img} />
           ))}

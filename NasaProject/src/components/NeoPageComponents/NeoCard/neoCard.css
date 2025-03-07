@@ -2,7 +2,14 @@
   padding: 10px;
   height: auto;
 }
+#neo-card h2 {
+  color: var(--nebula-purple);
+}
 
 #neo-card p {
   margin-bottom: 10px;
+}
+
+.type-info {
+  color: var(--galaxy-teal);
 }
