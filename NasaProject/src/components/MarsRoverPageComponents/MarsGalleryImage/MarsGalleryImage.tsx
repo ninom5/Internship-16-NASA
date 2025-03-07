@@ -6,7 +6,10 @@ export const MarsGalleryImage = ({ img }: { img: any }) => {
     navigate(`/marsRoverPhotos/${id}`);
   };
   return (
-    <div key={img.id} className="overflow-hidden rounded-lg">
+    <div
+      key={img.id}
+      className="overflow-hidden rounded-lg shadow-lg cursor-pointer scale-95 hover:scale-100 transform transition duration-300 ease-in-out"
+    >
       <img
         src={img.img_src}
         alt={`Mars rover photo captured: ${img.earth_date}`}

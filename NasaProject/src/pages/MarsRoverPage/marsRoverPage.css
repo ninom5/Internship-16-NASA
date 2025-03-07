@@ -1,19 +1,52 @@
+#mars-rover-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  padding-top: 150px;
+  background-color: var(--space-blue);
+  color: var(--text-white);
+}
+
+.rovers-info h1 {
+  font-size: 60px;
+  line-height: 70px;
+  color: var(--galaxy-teal);
+}
+.rovers-info p {
+  font-size: 20px;
+  color: var(--text-white);
+  padding-top: 10px;
+}
+
 .rovers-gallery {
   display: flex;
   flex-direction: column;
   width: 100%;
   align-items: center;
   justify-content: center;
-  padding: 30px;
-  justify-self: center;
-  background-color: var(--space-blue);
-  color: var(--text-white);
+  padding: 20px;
+  /* justify-self: center; */
 }
 
 .rovers-heading {
-  margin: 100px 0;
-  font-size: 70px;
+  margin: 20px 0 100px;
+  font-size: 60px;
+  color: var(--nebula-purple);
 }
 .gallery {
-  width: 75%;
+  width: 80%;
+}
+
+.rover-facts {
+  color: var(--text-white);
+  margin-bottom: 50px;
+}
+.rover-facts h2 {
+  font-size: 40px;
+  color: var(--galaxy-teal);
+  line-height: 50px;
+  margin-bottom: 10px;
 }

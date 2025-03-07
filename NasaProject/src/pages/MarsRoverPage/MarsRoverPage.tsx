@@ -17,22 +17,51 @@ export const MarsRoverPage = () => {
       animate="animate"
       exit="exit"
     >
-      <section className="rovers-gallery">
-        <h1 className="rovers-heading">Mars Rover Photos</h1>
+      <main id="mars-rover-page">
+        <section className="rovers-info text-center mb-8">
+          <h1 className="text-3xl font-bold">Mars Rover Exploration</h1>
+          <p className="text-lg text-gray-700 mt-2">
+            NASA's Mars rovers capture stunning images of the Red Planet,
+            helping scientists uncover its secrets. Explore the latest images
+            taken by these robotic explorers!
+          </p>
+        </section>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 p-4 gallery">
-          {photos.map((img) => (
-            <MarsGalleryImage key={img.id} img={img} />
-          ))}
-        </div>
+        <section className="rovers-gallery">
+          <h2 className="rovers-heading">Mars Rover Photos</h2>
 
-        <PaginationButtons
-          currentPage={currentPage}
-          loading={loading}
-          nextPage={nextPage}
-          prevPage={prevPage}
-        />
-      </section>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-15 p-4 gallery">
+            {photos.map((img) => (
+              <MarsGalleryImage key={img.id} img={img} />
+            ))}
+          </div>
+
+          <PaginationButtons
+            currentPage={currentPage}
+            loading={loading}
+            nextPage={nextPage}
+            prevPage={prevPage}
+          />
+        </section>
+
+        <section className="rover-facts text-center mt-8 p-4 border-t border-gray-300">
+          <h2 className="text-2xl font-semibold">Did You Know?</h2>
+          <ul className="list-disc list-inside text-white-700 mt-2">
+            <li>
+              Perseverance landed on Mars in February 2021 to search for signs
+              of ancient life.
+            </li>
+            <li>
+              Curiosity has been exploring Mars since 2012 and has traveled over
+              16 miles.
+            </li>
+            <li>
+              Spirit and Opportunity, twin rovers, surpassed their planned
+              90-day missions, lasting years!
+            </li>
+          </ul>
+        </section>
+      </main>
     </motion.div>
   );
 };
