@@ -12,3 +12,4 @@ export * from "./NeoList/NeoList";
 export * from "./Faq/Faq";
 export * from "./RechartsComponents/BarChart/NeoChart";
 export * from "./RechartsComponents/ScatterChart/NeoScatterChart";
+export * from "./HomePageLoader/HomePageLoader";

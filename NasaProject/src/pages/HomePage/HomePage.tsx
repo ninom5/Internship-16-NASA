@@ -2,6 +2,7 @@ import { useState } from "react";
 import { EarthComponent } from "../../components";
 import { AboutPage } from "../../components";
 import { SwitchButton } from "../../components";
+import { HomePageLoader } from "../../components";
 
 export const HomePage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -9,11 +10,8 @@ export const HomePage = () => {
   return (
     <main id="main">
       <section className="hero-section">
-        {isLoading && (
-          <h2 className="loading-message">
-            Earth interaction animation is being loaded...
-          </h2>
-        )}
+        {isLoading && <HomePageLoader />}
+
         <EarthComponent onLoad={() => setIsLoading(false)} />
         <p>Try clicking on mars</p>
         <SwitchButton />

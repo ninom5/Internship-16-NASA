@@ -20,6 +20,7 @@
 @import "./components/RechartsComponents/BarChart/neoChart.css";
 @import "./components/RechartsComponents/ScatterChart/neoScatterChart.css";
 @import "./pages/EarthImageryPage/earthImageryPage.css";
+@import "./components/HomePageLoader/homePageLoader.css";
 @import "./variables.css";
 
 * {
