@@ -4,9 +4,9 @@ import { MarsDetailsCard } from "../../components";
 
 export const MarsDetailsPage = () => {
   const { imgId } = useParams<Record<string | string, undefined>>();
-  console.log(imgId);
+
   const { photos, loading, error } = useMarsRovers();
-  console.log(photos);
+
   if (loading) return <div>loading...</div>;
   if (error) return <div>error: {error}</div>;
   if (!photos || photos.length === 0) return <div>all photos empty</div>;

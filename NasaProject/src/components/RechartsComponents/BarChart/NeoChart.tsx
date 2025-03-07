@@ -26,8 +26,6 @@ export const NeoChart = () => {
         }))
     : [];
 
-  console.log(formattedData);
-
   return (
     <div className="bg-gray-900 p-6 mt-8 rounded-lg" id="neo-bar-chart">
       <h3

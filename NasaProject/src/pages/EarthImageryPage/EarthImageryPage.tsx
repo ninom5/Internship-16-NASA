@@ -24,7 +24,7 @@ export const EarthImageryPage = () => {
 
   if (error) return <div>error: {error}</div>;
 
-  console.log(imgUrl);
+  // console.log(imgUrl);
 
   return (
     <motion.div
