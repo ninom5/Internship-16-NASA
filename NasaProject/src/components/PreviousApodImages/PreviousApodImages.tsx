@@ -1,9 +1,23 @@
-import { useApod } from "../../hooks";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
+import { withLoading } from "../../hoc/withLoading";
+import { ApodData } from "../../types";
 
-export const PreviousApodImages = () => {
-  const { data, loading, error, fetchMore, hasMore } = useApod();
+interface PreviousApodImagesProps {
+  data: ApodData[] | null;
+  loading: boolean;
+  error: string | null;
+  fetchMore: () => void;
+  hasMore: boolean;
+}
+
+const PreviousApodImages = ({
+  data,
+  loading,
+  error,
+  fetchMore,
+  hasMore,
+}: PreviousApodImagesProps) => {
   const navigate = useNavigate();
   const observer = useRef<IntersectionObserver | null>(null);
   const lastImageRef = useRef<HTMLDivElement | null>(null);
@@ -13,7 +27,7 @@ export const PreviousApodImages = () => {
   };
 
   useEffect(() => {
-    if (loading) return;
+    if (loading || !hasMore) return;
     if (observer.current) observer.current.disconnect();
 
     observer.current = new IntersectionObserver(
@@ -26,53 +40,57 @@ export const PreviousApodImages = () => {
     );
 
     if (lastImageRef.current) observer.current.observe(lastImageRef.current);
-  }, [loading, hasMore]);
 
-  if (error) return <h3>Error: {error}</h3>;
-  if (!data || data.length === 0) return <h3>No data ??</h3>;
+    return () => {
+      if (observer.current) observer.current.disconnect();
+    };
+  }, [loading, hasMore, data?.length]);
+
+  if (error || !data?.length)
+    return <h3>{error ? `Error: ${error}` : "No data available"}</h3>;
 
   return (
     <div className="grid grid-cols-2 gap-4 md:grid-cols-4" id="gallery">
       {data.map((item, index) => {
         const isLastBatch = index === data.length - (data.length % 5 || 5);
+        const isLastItemInBatch = index % 5 === 4 || index === data.length - 1;
 
         if (index % 5 === 0) {
           return (
             <div
-              key={index}
+              key={item.date}
               className="grid gap-4"
-              ref={isLastBatch ? lastImageRef : null}
+              ref={isLastBatch && isLastItemInBatch ? lastImageRef : null}
             >
               {data.slice(index, index + 5).map((subItem, subIndex) => (
-                <div key={subIndex} className="img-div">
+                <div
+                  key={subItem.date}
+                  className="img-div"
+                  ref={
+                    isLastBatch &&
+                    subIndex === data.slice(index, index + 5).length - 1
+                      ? lastImageRef
+                      : null
+                  }
+                >
                   {subItem.mediaType === "image" ? (
-                    <div className="img-div">
-                      <img
-                        src={subItem.hdurl ?? undefined}
-                        alt={subItem.title}
-                        onClick={() =>
-                          handleOnClickImage({ date: subItem.date })
-                        }
-                        className="h-auto max-w-full rounded-lg object-cover object-center"
-                      />
-                    </div>
+                    <img
+                      src={subItem.hdurl ?? undefined}
+                      alt={subItem.title}
+                      onClick={() => handleOnClickImage({ date: subItem.date })}
+                      className="h-auto max-w-full rounded-lg object-cover object-center"
+                    />
                   ) : subItem.mediaUrl?.endsWith(".html") ? (
-                    <div>
-                      <a href={subItem.mediaUrl} target="_blank">
-                        Click on link to see interactive image on page
-                      </a>
-                    </div>
+                    <a href={subItem.mediaUrl} target="_blank">
+                      Click here to view interactive content
+                    </a>
                   ) : (
-                    <div className="img-div">
-                      <img
-                        src={subItem.thumbnail_url ?? undefined}
-                        alt={subItem.title}
-                        onClick={() =>
-                          handleOnClickImage({ date: subItem.date })
-                        }
-                        className="h-auto max-w-full rounded-lg object-cover object-center"
-                      />
-                    </div>
+                    <img
+                      src={subItem.thumbnail_url ?? undefined}
+                      alt={subItem.title}
+                      onClick={() => handleOnClickImage({ date: subItem.date })}
+                      className="h-auto max-w-full rounded-lg object-cover object-center"
+                    />
                   )}
                 </div>
               ))}
@@ -82,6 +100,9 @@ export const PreviousApodImages = () => {
         return null;
       })}
       {loading && <h2>Loading more...</h2>}
+      {!hasMore && !loading && <h2>No more data available</h2>}
     </div>
   );
 };
+
+export default withLoading(PreviousApodImages);

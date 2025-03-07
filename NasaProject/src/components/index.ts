@@ -4,7 +4,7 @@ export * from "./Earth/Earth";
 export * from "./ErrorBoundary/ErrorFallback";
 export * from "./Header/Header";
 export * from "./TailwindComponents/SwitchButton";
-export * from "./PreviousApodImages/PreviousApodImages";
+// export * from "./PreviousApodImages/PreviousApodImages";
 export * from "./MuiComponents/ApodDetails/ApodDetails";
 export * from "./MuiComponents/MarsDetailsCard/MarsDetailsCard";
 export * from "./NeoCard/NeoCard";
