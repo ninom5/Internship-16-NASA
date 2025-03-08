@@ -9,6 +9,7 @@ import {
 } from "@components/index";
 import { motion } from "framer-motion";
 import { fadeInRotateAnimation } from "@constants/Animations";
+import { NeoPieChart } from "@components/index";
 
 export const NeoPage = () => {
   const { data, error, loading } = useFetchNeo();
@@ -41,6 +42,7 @@ export const NeoPage = () => {
             <h2 id="visualization-title">NEO Data Visualization</h2>
             <NeoChart />
             <NeoScatterChart />
+            <NeoPieChart />
             <Faq />
           </>
         )}

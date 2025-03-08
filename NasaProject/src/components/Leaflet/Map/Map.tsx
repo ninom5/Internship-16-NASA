@@ -1,4 +1,4 @@
-import { MapContainer, Marker, TileLayer } from "react-leaflet";
+import { MapContainer, Marker, TileLayer, Popup } from "react-leaflet";
 import { useMap } from "@hooks/index";
 import { SearchComponent } from "./SearchComponent";
 import "leaflet-control-geocoder/dist/Control.Geocoder.css";
@@ -19,11 +19,18 @@ export const Map = () => {
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <p>&#9825; &#9829;</p>
 
       <SearchComponent />
 
-      <Marker position={position} />
+      <Marker position={position}>
+        <Popup>
+          <b>Location Info:</b>
+          <br />
+          Latitude:{(position as L.LatLng).lat}
+          <br />
+          Longitude:{(position as L.LatLng).lng}
+        </Popup>
+      </Marker>
     </MapContainer>
   );
 };

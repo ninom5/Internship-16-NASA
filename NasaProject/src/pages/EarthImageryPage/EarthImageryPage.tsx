@@ -2,6 +2,7 @@ import { Map } from "@components/index";
 import { useEarthImagery } from "@hooks/index";
 import { fadeInBlurAnimation } from "@constants/Animations";
 import { motion } from "framer-motion";
+import { FavoriteLocations } from "@components/FavoriteLocations/FavoriteLocations";
 
 export const EarthImageryPage = () => {
   const { loading, error, imageUrl } = useEarthImagery();
@@ -22,10 +23,16 @@ export const EarthImageryPage = () => {
         <p>Find the latest satellite images of Earth</p>
         <Map />
 
-        <h2 id="satellite-image-heading">Your satellite image</h2>
-        <div className="image-wrapper">
-          {imageUrl && <img src={imageUrl} alt="satellite image" />}
-        </div>
+        <section className="satellite-image-section">
+          <h2 id="satellite-image-heading">
+            🛰️Satellite image for chosen location🚀
+          </h2>
+          <div className="image-wrapper">
+            {imageUrl && <img src={imageUrl} alt="satellite image" />}
+          </div>
+        </section>
+
+        <FavoriteLocations />
       </section>
     </motion.div>
   );
