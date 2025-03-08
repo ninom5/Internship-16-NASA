@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { EarthImageryContextType } from "../../types/earthImageryContextType";
+import { EarthImageryContextType } from "types";
 
 export const EarthImageryContext = createContext<EarthImageryContextType>({
   imageUrl: "",

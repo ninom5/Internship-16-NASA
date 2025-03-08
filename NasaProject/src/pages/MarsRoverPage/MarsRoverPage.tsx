@@ -4,7 +4,6 @@ import {
   MarsGallery,
   PaginationButtons,
   GallerySkeleton,
-  LoadingAstronaut,
 } from "@components/index";
 import { motion } from "framer-motion";
 

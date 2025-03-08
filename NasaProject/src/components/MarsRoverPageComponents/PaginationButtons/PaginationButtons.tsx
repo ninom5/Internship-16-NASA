@@ -1,11 +1,5 @@
 import React from "react";
-
-interface PaginationButtonsProps {
-  currentPage: number;
-  loading: boolean;
-  nextPage: () => void;
-  prevPage: () => void;
-}
+import { PaginationButtonsProps } from "types";
 
 export const PaginationButtons: React.FC<PaginationButtonsProps> = ({
   currentPage,

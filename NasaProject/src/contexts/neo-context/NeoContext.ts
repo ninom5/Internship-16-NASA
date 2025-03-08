@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { NeoContextType } from "../../types/neoContextType";
+import { NeoContextType } from "../../types/NeoTypes/neoContextType";
 
 export const NeoContext = createContext<NeoContextType>({
   data: {

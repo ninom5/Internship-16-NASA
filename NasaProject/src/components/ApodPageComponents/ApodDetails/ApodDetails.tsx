@@ -1,12 +1,5 @@
 import { Box, Typography } from "@mui/material";
-
-interface SelectedImage {
-  title: string;
-  mediaUrl: string | null;
-  date: string;
-  description: string;
-  mediaType: string;
-}
+import { SelectedImage } from "types";
 
 export const ApodDetails = ({
   selectedImage,

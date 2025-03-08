@@ -1,4 +1,4 @@
-import { NeoData } from "./neoContextType";
+import { NeoData } from "types";
 
 export type NeoAction =
   | { type: "FETCH_REQUEST" }

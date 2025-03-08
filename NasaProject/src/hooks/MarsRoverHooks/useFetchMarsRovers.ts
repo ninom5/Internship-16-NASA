@@ -1,7 +1,7 @@
 import { useEffect, useReducer, useState } from "react";
 import { fetchMarsRoverData } from "@services/marsRoverServices";
 import { RoverPhoto } from "@contexts/index";
-import { MarsRoverAction } from "../../types";
+import { MarsRoverAction } from "types";
 
 interface State {
   allPhotos: RoverPhoto[];

@@ -1,5 +1,5 @@
 import { useFetchNeo } from "@hooks/index";
-import { NearEarthObject } from "../../types/neoContextType";
+import { NearEarthObject } from "types";
 import {
   Faq,
   NeoChart,

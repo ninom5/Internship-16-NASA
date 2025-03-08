@@ -23,3 +23,4 @@ export * from "./LoadingAstronaut/LoadingAstronaut";
 export * from "./Leaflet/Map/Map";
 export * from "./GallerySkeleton/GallerySkeleton";
 export * from "./NeoPageComponents/RechartsComponents/PieChart/NeoPieChart";
+export * from "./FavoriteLocations/FavoriteLocations";

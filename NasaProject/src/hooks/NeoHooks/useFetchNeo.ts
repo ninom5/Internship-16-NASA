@@ -1,5 +1,5 @@
-import { NeoData } from "../../types/neoContextType";
-import { NeoAction } from "../../types/neoActionType";
+import { NeoData } from "types";
+import { NeoAction } from "types";
 import { useEffect, useReducer } from "react";
 import { fetchNeoData } from "@services/neoService";
 

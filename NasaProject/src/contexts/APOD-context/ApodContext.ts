@@ -1,14 +1,5 @@
 import { createContext } from "react";
-
-export interface ApodData {
-  mediaUrl: string | null;
-  description: string;
-  date: string;
-  mediaType: string;
-  title: string;
-  hdurl: string;
-  thumbnail_url: string | null;
-}
+import { ApodData } from "types";
 
 export interface ApodContextType {
   data: ApodData[];

@@ -79,7 +79,12 @@ export const ApodImage: React.FC = () => {
           />
         </div>
       )}
-      <input type="date" value={date} onChange={handleDateChange} />
+      <input
+        type="date"
+        value={date}
+        onChange={handleDateChange}
+        id="apod-date-input"
+      />
     </section>
   );
 };

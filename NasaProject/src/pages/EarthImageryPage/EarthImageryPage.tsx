@@ -1,8 +1,7 @@
-import { Map } from "@components/index";
+import { Map, FavoriteLocations } from "@components/index";
 import { useEarthImagery } from "@hooks/index";
 import { fadeInBlurAnimation } from "@constants/Animations";
 import { motion } from "framer-motion";
-import { FavoriteLocations } from "@components/FavoriteLocations/FavoriteLocations";
 
 export const EarthImageryPage = () => {
   const { loading, error, imageUrl } = useEarthImagery();

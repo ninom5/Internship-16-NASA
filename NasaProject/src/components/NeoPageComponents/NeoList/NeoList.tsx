@@ -1,6 +1,6 @@
 import { Rocket } from "lucide-react";
 import { NeoCard } from "@components/index";
-import { NearEarthObject } from "../../../types/neoContextType";
+import { NearEarthObject } from "../../../types/NeoTypes/neoContextType";
 import { withLoading } from "@hoc/withLoading";
 
 const NeoList = ({ neoList }: { neoList: NearEarthObject[] }) => {

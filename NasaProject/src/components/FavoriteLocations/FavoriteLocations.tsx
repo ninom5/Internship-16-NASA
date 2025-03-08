@@ -11,7 +11,6 @@ import {
 import { HeartOff } from "lucide-react";
 import { confirmRemoveFavorite } from "@utils/confirmRemoveFavorite";
 import { showAlert } from "@utils/showAlert";
-import { icon } from "leaflet";
 
 export const FavoriteLocations: React.FC = () => {
   const [favorites, setFavorites] = useState<string[]>([]);

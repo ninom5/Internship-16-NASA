@@ -1,4 +1,4 @@
-import { RoverPhoto } from "../contexts";
+import { RoverPhoto } from "@contexts/index";
 
 export type MarsRoverAction =
   | { type: "FETCH_REQUEST" }

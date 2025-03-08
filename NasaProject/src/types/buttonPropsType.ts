@@ -4,3 +4,10 @@ export interface ButtonProps {
   emoji: string;
   className?: string;
 }
+
+export interface PaginationButtonsProps {
+  currentPage: number;
+  loading: boolean;
+  nextPage: () => void;
+  prevPage: () => void;
+}
