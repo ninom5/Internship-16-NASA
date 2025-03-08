@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 export const MarsRoverPage = () => {
-  const { photos, loading, error, nextPage, prevPage, currentPage } =
+  const { photos, allPhotos, loading, error, nextPage, prevPage, currentPage } =
     useFetchMarsRovers();
 
   const [selectedCamera, setSelectedCamera] = useState("All");

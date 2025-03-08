@@ -2,15 +2,18 @@ import { useEffect, useReducer, useState } from "react";
 import { fetchMarsRoverData } from "@services/marsRoverServices";
 import { RoverPhoto } from "@contexts/index";
 import { MarsRoverAction } from "types";
+import { all } from "axios";
 
 interface State {
   allPhotos: RoverPhoto[];
+  photos: RoverPhoto[];
   loading: boolean;
   error: string | null;
 }
 
 const initialState: State = {
   allPhotos: [],
+  photos: [],
   loading: false,
   error: null,
 };
@@ -23,6 +26,7 @@ const marsRoverReducer = (state: State, action: MarsRoverAction): State => {
       return {
         ...state,
         loading: false,
+        photos: action.payload,
         allPhotos: [...state.allPhotos, ...action.payload],
       };
     case "FETCH_FAILURE":
@@ -60,7 +64,7 @@ export const useFetchMarsRovers = () => {
     };
 
     fetchData();
-  }, [currentPage, state.allPhotos]);
+  }, [currentPage]);
 
   const nextPage = () => {
     if (currentPage * IMAGES_PER_PAGE < state.allPhotos.length) {
@@ -77,6 +81,7 @@ export const useFetchMarsRovers = () => {
       (currentPage - 1) * IMAGES_PER_PAGE,
       currentPage * IMAGES_PER_PAGE
     ),
+    allPhotos: state.allPhotos,
     loading: state.loading,
     error: state.error,
     nextPage,

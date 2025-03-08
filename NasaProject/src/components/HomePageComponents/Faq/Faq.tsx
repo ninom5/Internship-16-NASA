@@ -105,8 +105,6 @@ export const Faq = () => {
           </Typography>
         </AccordionDetails>
       </Accordion>
-
-      {/* Add more questions here */}
     </div>
   );
 };

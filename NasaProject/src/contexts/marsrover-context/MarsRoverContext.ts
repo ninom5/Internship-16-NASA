@@ -26,12 +26,14 @@ export interface RoverPhoto {
 
 export interface MarsRoverContextType {
   photos: RoverPhoto[];
+  allPhotos: RoverPhoto[];
   loading: boolean;
   error: string | null;
 }
 
 export const MarsRoverContext = createContext<MarsRoverContextType>({
   photos: [],
+  allPhotos: [],
   loading: true,
   error: null,
 });
