@@ -1,7 +1,8 @@
 import axios from "axios";
+import { NEO_API_PATH } from "@constants/apiPaths";
 
 const apiKey = import.meta.env.VITE_NASA_API_KEY;
-const baseUrl = `https://api.nasa.gov/neo/rest/v1/feed`;
+const baseUrl = NEO_API_PATH;
 
 export const fetchNeoData = async (startDate: string, endDate: string) => {
   try {

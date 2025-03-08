@@ -1,8 +1,9 @@
 import axios from "axios";
 import { LatLngTuple } from "leaflet";
+import { EARTH_IMAGERY_API_PATH } from "@constants/apiPaths";
 
 const apiKey = import.meta.env.VITE_NASA_API_KEY;
-const baseUrl = `https://api.nasa.gov/planetary/earth/assets`;
+const baseUrl = EARTH_IMAGERY_API_PATH;
 
 export const fetchEarthImageryData = async (
   today: string,

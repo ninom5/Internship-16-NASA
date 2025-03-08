@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 export const EarthImageryPage = () => {
   const { loading, error, imageUrl } = useEarthImagery();
 
-  console.log("imageUrl", imageUrl);
   if (loading) return <div>loading...</div>;
 
   if (error) return <div>error: {error}</div>;

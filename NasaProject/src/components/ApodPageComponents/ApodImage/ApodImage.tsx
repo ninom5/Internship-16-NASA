@@ -33,10 +33,6 @@ export const ApodImage: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-    console.log(selectedImg);
-  }, [selectedImg]);
-
   const fetchImageForDate = async (targetDate: string) => {
     try {
       const fetchedImages = await fetchApodImages(targetDate, targetDate);

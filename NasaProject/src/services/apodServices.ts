@@ -1,7 +1,8 @@
 import axios from "axios";
+import { APOD_API_PATH } from "@constants/apiPaths";
 
 const apiKey = import.meta.env.VITE_NASA_API_KEY;
-const baseUrl = `https://api.nasa.gov/planetary/apod`;
+const baseUrl = APOD_API_PATH;
 
 export const fetchApodImages = async (startDate: string, endDate: string) => {
   try {

@@ -101,6 +101,49 @@ const PreviousApodImages = ({
       {!hasMore && !loading && <h2>No more data available</h2>}
     </div>
   );
+  /* s ovin observer uvik radi /
+  /*return (
+    <div className="grid grid-cols-2 gap-4 md:grid-cols-4" id="gallery">
+      {data.map((item, index) => {
+        const isLastItem = index === data.length - 1;
+
+        return (
+          <div
+            key={item.date}
+            className="grid gap-4"
+            ref={isLastItem ? lastImageRef : null}
+          >
+            {data.slice(index, index + 1).map((subItem) => (
+              <div key={subItem.date} className="img-div">
+                {subItem.mediaType === "image" ? (
+                  <img
+                    src={subItem.hdurl ?? undefined}
+                    alt={subItem.title}
+                    onClick={() => handleOnClickImage({ date: subItem.date })}
+                    className="h-auto max-w-full rounded-lg object-cover object-center"
+                  />
+                ) : subItem.mediaUrl?.endsWith(".html") ? (
+                  <a href={subItem.mediaUrl} target="_blank">
+                    Click here to view interactive content
+                  </a>
+                ) : (
+                  <img
+                    src={subItem.thumbnail_url ?? undefined}
+                    alt={subItem.title}
+                    onClick={() => handleOnClickImage({ date: subItem.date })}
+                    className="h-auto max-w-full rounded-lg object-cover object-center"
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+        );
+      })}
+      {loading && <h2>Loading more...</h2>}
+      {!hasMore && !loading && <h2>No more data available</h2>}
+    </div>
+  );
+*/
 };
 
 export default withLoading(PreviousApodImages);

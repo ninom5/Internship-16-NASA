@@ -2,6 +2,7 @@ import { useEffect, useReducer, useCallback } from "react";
 import { fetchApodImages } from "@services/apodServices";
 import { ApodAction } from "../../types";
 import { ApodData } from "../../types";
+import { toast } from "react-toastify";
 
 const initialState = {
   data: [] as ApodData[],
@@ -58,7 +59,7 @@ export const useFetchApod = () => {
       );
 
       if (fetchedImages.length === 0) {
-        console.log("no more images to show");
+        toast.error("No more images available");
         dispatch({
           type: "FETCH_FAILURE",
           payload: "No more images available",

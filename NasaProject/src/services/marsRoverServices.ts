@@ -1,7 +1,8 @@
 import axios from "axios";
+import { MARS_ROVER_API_PATH } from "@constants/apiPaths";
 
 const apiKey = import.meta.env.VITE_NASA_API_KEY;
-const baseUrl = `https://api.nasa.gov/mars-photos/api/v1/rovers`;
+const baseUrl = MARS_ROVER_API_PATH;
 const rovers = ["curiosity", "opportunity", "spirit"];
 
 export const fetchMarsRoverData = async (earthDate: Date) => {
