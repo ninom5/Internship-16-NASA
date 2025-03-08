@@ -6,12 +6,37 @@ import {
   GallerySkeleton,
 } from "@components/index";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 export const MarsRoverPage = () => {
   const { photos, loading, error, nextPage, prevPage, currentPage } =
     useFetchMarsRovers();
 
+  const [selectedCamera, setSelectedCamera] = useState("All");
+
   if (error) throw new Error(`Error showing mars rover gallery: ${error}`);
+
+  const cameras = [
+    "All",
+    "FHAZ",
+    "RHAZ",
+    "MAST",
+    "CHEMCAM_RMI",
+    "MAHLI",
+    "MARDI",
+    "NAVCAM",
+    "NAV_LEFT_B",
+    "NAV_RIGHT_B",
+  ];
+
+  const handleCameraChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedCamera(e.target.value);
+  };
+
+  const filteredPhotos =
+    selectedCamera === "All"
+      ? photos
+      : photos.filter((photo) => photo.camera.name === selectedCamera);
 
   return (
     <motion.div
@@ -33,8 +58,24 @@ export const MarsRoverPage = () => {
         <section className="rovers-gallery">
           <h2 className="rovers-heading">Mars Rover Photos</h2>
 
+          <div className="rovers-selects">
+            <label htmlFor="camera-select">Select a Camera:</label>
+            <select
+              name="camera-select"
+              id="camera-select"
+              value={selectedCamera}
+              onChange={handleCameraChange}
+            >
+              {cameras.map((camera) => (
+                <option key={camera} value={camera}>
+                  {camera}
+                </option>
+              ))}
+            </select>
+          </div>
+
           <MarsGallery
-            photos={photos}
+            photos={filteredPhotos}
             isLoading={loading}
             LoadingComponent={GallerySkeleton}
           />
