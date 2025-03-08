@@ -17,6 +17,7 @@ export interface ApodContextType {
   hasMore: boolean;
   startDate: Date;
   fetchMore: () => Promise<void>;
+  dispatch?: React.Dispatch<any>;
 }
 
 export const ApodContext = createContext<ApodContextType>({
@@ -26,4 +27,5 @@ export const ApodContext = createContext<ApodContextType>({
   hasMore: true,
   startDate: new Date(),
   fetchMore: async () => {},
+  dispatch: () => {},
 });

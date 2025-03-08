@@ -32,9 +32,7 @@ const PreviousApodImages = ({
 
     observer.current = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && hasMore) {
-          fetchMore();
-        }
+        if (entries[0].isIntersecting && hasMore) fetchMore();
       },
       { threshold: 1.0 }
     );

@@ -2,54 +2,84 @@ import { useState, useEffect } from "react";
 import { useApod } from "@hooks/index";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { fetchApodImages } from "@services/apodServices";
+import { ApodData } from "types";
 
 export const ApodImage: React.FC = () => {
-  const { data, loading, error } = useApod();
+  const { data, loading, error, dispatch } = useApod();
   const navigate = useNavigate();
 
   const currentDate = new Date().toISOString().split("T")[0];
-
   const [date, setDate] = useState(currentDate);
-  const [selectedImg, setSelectedImg] = useState(() =>
-    data?.find((img) => img.date === currentDate)
-  );
+  const [selectedImg, setSelectedImg] = useState<ApodData>();
 
   useEffect(() => {
-    setSelectedImg(data.find((img) => img.date === date));
-  }, [date, data]);
+    const foundImage = data.find((img) => img.date === date);
+    setSelectedImg(foundImage || selectedImg);
+  }, [date, data, currentDate]);
 
   const handleClick = ({ date }: { date: string }) => {
-    navigate(`/astronomy/${date}`);
+    const existingImage = data.find((img) => img.date === date);
+
+    if (!existingImage && selectedImg) {
+      const updatedData = [...data, selectedImg];
+
+      if (dispatch)
+        dispatch({ type: "UPDATE_APOD_DATA", payload: updatedData });
+
+      navigate(`/astronomy/${date}`);
+    } else {
+      navigate(`/astronomy/${date}`);
+    }
   };
 
-  const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  useEffect(() => {
+    console.log(selectedImg);
+  }, [selectedImg]);
+
+  const fetchImageForDate = async (targetDate: string) => {
+    try {
+      const fetchedImages = await fetchApodImages(targetDate, targetDate);
+      if (fetchedImages.length) {
+        setSelectedImg(fetchedImages[0]);
+      }
+    } catch (error) {
+      toast.error("Failed to fetch image for the selected date.");
+    }
+  };
+
+  const handleDateChange = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const newDate = event.target.value.toString();
+
     if (newDate > currentDate) {
-      toast.error("Date can't be in future");
+      toast.error("Date can't be in the future");
       return;
+    }
+
+    const existingImage = data.find((img) => img.date === newDate);
+
+    if (!existingImage) {
+      await fetchImageForDate(newDate);
     }
 
     setDate(newDate);
   };
 
-  let todayImg = data.find((img) => img.date === currentDate);
-
-  if (loading) return <div>loading</div>;
-
-  if (error) return <div>error: {error}</div>;
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <section className="apod-section">
       <h1>APOD: Astronomy Picture of the Day</h1>
-      {todayImg && (
+      {selectedImg && (
         <div className="image-container">
           <img
-            src={selectedImg?.mediaUrl ?? undefined}
-            alt="Astronomy picture of the day"
+            src={selectedImg.mediaUrl ?? undefined}
+            alt={selectedImg.title ?? "Astronomy picture of the day"}
             id="image-of-the-day"
-            onClick={() =>
-              todayImg && handleClick({ date: todayImg.date ?? "" })
-            }
+            onClick={() => handleClick({ date: selectedImg.date })}
           />
         </div>
       )}

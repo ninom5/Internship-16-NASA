@@ -3,7 +3,7 @@ import { StyledWrapper } from "./loadingAstronautStyle";
 export const LoadingAstronaut = () => {
   return (
     <StyledWrapper>
-      <div>
+      <div className="loading-astronaut-background">
         <div className="box-of-star1">
           <div className="star star-position1" />
           <div className="star star-position2" />

@@ -38,6 +38,7 @@ export const StyledWrapper = styled.div`
     top: 0;
     transform: translateY(0px);
     height: 700px;
+    background-color: #1e2a47;
   }
 
   .box-of-star1 {
