@@ -10,6 +10,9 @@ import { ToastContainer } from "react-toastify";
 
 export const ApodPage = () => {
   const { data, loading, error, fetchMore, hasMore } = useApod();
+
+  if (error) throw new Error(`Error showing apod gallery: ${error}`);
+
   return (
     <motion.div
       variants={fadeInUpAnimation}

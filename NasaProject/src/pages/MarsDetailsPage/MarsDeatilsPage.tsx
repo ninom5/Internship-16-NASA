@@ -8,7 +8,10 @@ export const MarsDetailsPage = () => {
   const { photos, loading, error } = useMarsRovers();
 
   if (loading) return <div>loading...</div>;
-  if (error) return <div>error: {error}</div>;
+
+  if (error)
+    throw new Error(`Error showing mars rover photo details: ${error}`);
+
   if (!photos || photos.length === 0) return <div>all photos empty</div>;
 
   const image = photos.find((photo) => photo.id === Number(imgId));

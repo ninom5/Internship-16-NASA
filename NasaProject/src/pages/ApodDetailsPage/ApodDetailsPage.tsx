@@ -8,7 +8,7 @@ export const ApodDetailsPage = () => {
 
   if (loading) return <h1>loading...</h1>;
 
-  if (error) return <h2>error: {error}</h2>;
+  if (error) throw new Error(`Error showing apod details: ${error}`);
 
   if (!data || data.length === 0) return <p>no data</p>;
 

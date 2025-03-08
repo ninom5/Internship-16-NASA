@@ -8,7 +8,7 @@ export const EarthImageryPage = () => {
 
   if (loading) return <div>loading...</div>;
 
-  if (error) return <div>error: {error}</div>;
+  if (error) throw new Error(`Error showing earth imagery page: ${error}`);
 
   return (
     <motion.div

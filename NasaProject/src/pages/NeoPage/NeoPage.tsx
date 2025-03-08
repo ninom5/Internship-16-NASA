@@ -14,7 +14,7 @@ import { NeoPieChart } from "@components/index";
 export const NeoPage = () => {
   const { data, error, loading } = useFetchNeo();
 
-  if (error) return <div>Error: {error}</div>;
+  if (error) throw new Error(`Error showing neo data: ${error}`);
 
   const neoList: NearEarthObject[] = data?.near_earth_objects
     ? Object.values(

@@ -11,7 +11,7 @@ export const MarsRoverPage = () => {
   const { photos, loading, error, nextPage, prevPage, currentPage } =
     useFetchMarsRovers();
 
-  if (error) return <div>error: {error}</div>;
+  if (error) throw new Error(`Error showing mars rover gallery: ${error}`);
 
   return (
     <motion.div
